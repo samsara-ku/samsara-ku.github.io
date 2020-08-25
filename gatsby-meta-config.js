@@ -1,24 +1,24 @@
 module.exports = {
-  title: `Bee starter`,
+  title: `samsara-ku.dev`,
   description: `Blog posted about ...`,
-  author: `[Your Name]`,
-  introduction: `I explain with words and code. I explain with words and code. I explain with words and code.`,
-  siteUrl: `https://gatsby-starter-bee.netlify.com`, // Your blog site url
+  author: `samsara-ku`,
+  introduction: `Newbie Web FE engineer :)`,
+  siteUrl: `https://samsara-ku.dev`, // Your blog site url
   social: {
     twitter: ``, // Your Twitter account
-    github: ``, // Your GitHub account
+    github: `samsara-ku`, // Your GitHub account
     medium: ``, // Your Medium account
     facebook: ``, // Your Facebook account
-    linkedin: ``, // Your LinkedIn account
+    linkedin: `윤회-구-453541190`, // Your LinkedIn account
   },
-  icon: `content/assets/felog.png`, // Add your favicon
+  icon: `content/assets/felog.png`, // Ad your favicon
   keywords: [`blog`],
   comment: {
     disqusShortName: '', // Your disqus-short-name. check disqus.com.
-    utterances: 'JaeYeopHan/gatsby-starter-bee', // Your repository for archive comment
+    utterances: 'samsara-ku/samsara-ku.github.io', // Your repository for archive comment
   },
   configs: {
-    countOfInitialPost: 10, // Config your initial count of post
+    countOfInitialPost: 8, // Config your initial count of post
   },
   sponsor: {
     buyMeACoffeeId: 'jbee',
