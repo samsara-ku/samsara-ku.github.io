@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[samsara-ku.dev]]></title><description><![CDATA[Blog posted about ...]]></description><link>https://samsara-ku.dev</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 25 Aug 2020 13:32:55 GMT</lastBuildDate><item><title><![CDATA[Single thread인 JS가 어떻게 여러 개의 작업을 처리할까?]]></title><description><![CDATA[😢 해당 포스트는 마이그레이션중인 포스트에요! 추후 업데이트 필요! 웹사이트들을 돌아다니다가 정말 자극적인 문구의 사이트를 보게 되었다!     바로 모든 자바스크립트 개발자가 알아야 하는 33가지 개념이라는 github repo…]]></description><link>https://samsara-ku.dev/development/what-is-call-stack-and-event-loop/</link><guid isPermaLink="false">https://samsara-ku.dev/development/what-is-call-stack-and-event-loop/</guid><pubDate>Sat, 13 Jun 2020 16:21:13 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[samsara-ku.dev]]></title><description><![CDATA[Blog posted about ...]]></description><link>https://samsara-ku.dev</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 07 Sep 2020 17:38:00 GMT</lastBuildDate><item><title><![CDATA[Single thread인 JS가 어떻게 여러 개의 작업을 처리할까?]]></title><description><![CDATA[😢 해당 포스트는 마이그레이션중인 포스트에요! 추후 업데이트 필요! 웹사이트들을 돌아다니다가 정말 자극적인 문구의 사이트를 보게 되었다!     바로 모든 자바스크립트 개발자가 알아야 하는 33가지 개념이라는 github repo…]]></description><link>https://samsara-ku.dev/development/what-is-call-stack-and-event-loop/</link><guid isPermaLink="false">https://samsara-ku.dev/development/what-is-call-stack-and-event-loop/</guid><pubDate>Sat, 13 Jun 2020 16:21:13 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1000px; &quot;
     &gt;
@@ -582,9 +582,654 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;오늘 포스트에서 봤던 IIFE같은 경우는 전역변수의 사용을 최소화 하기 위해서 만들어진 함수 표현식이다. 좋은 기법이라고 생각하고 있고, 나중에 쓸 일이 있으면 적극적으로 사용해봐야겠다!    &lt;/p&gt;
 &lt;p&gt;더 자세한 내용들은 내가 참고했었던 블로그의 포스트를 참고하시면 좋을 것 같다. 이 내용은 단순히 그 내용들을 정리한 정도이니 :)&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://medium.com/javascript-in-plain-english/https-medium-com-javascript-in-plain-english-stop-feeling-iffy-about-using-an-iife-7b0292aba174&quot;&gt;What is an IIFE in JavaScript?&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a href=&quot;http://chanlee.github.io/2014/01/11/understand-javascript-iife/&quot;&gt;Javascript IIFE 이해하기&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git issue가 무엇일까?]]></title><description><![CDATA[😢 해당 포스트는 마이그레이션중인 포스트에요! 추후 업데이트 필요!  인터넷에서 Git issue에 대해 검색하면 나오는 사진. issue를 잘 사용하는 모습이다.  저번 포스트에서는 Git과 Github…]]></description><link>https://samsara-ku.dev/common_sense/importance-of-git-issue/</link><guid isPermaLink="false">https://samsara-ku.dev/common_sense/importance-of-git-issue/</guid><pubDate>Wed, 22 Apr 2020 16:24:13 GMT</pubDate><content:encoded>&lt;h3 id=&quot;-해당-포스트는-마이그레이션중인-포스트에요-추후-업데이트-필요&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%ED%95%B4%EB%8B%B9-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%8A%94-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98%EC%A4%91%EC%9D%B8-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EC%97%90%EC%9A%94-%EC%B6%94%ED%9B%84-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%ED%95%84%EC%9A%94&quot; aria-label=&quot; 해당 포스트는 마이그레이션중인 포스트에요 추후 업데이트 필요 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;😢 해당 포스트는 마이그레이션중인 포스트에요! 추후 업데이트 필요!&lt;/h3&gt;
-&lt;br /&gt;
-&lt;p&gt;&lt;span
+&lt;p&gt;&lt;a href=&quot;http://chanlee.github.io/2014/01/11/understand-javascript-iife/&quot;&gt;Javascript IIFE 이해하기&lt;/a&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[나중에 도움이 될 수 있는 Q&A]]></title><description><![CDATA[1. HTML 질문   이해하기 쉽게 말하자면, 의미가 있는 태그와 의미가 없는 태그를 구분하겠다는 설명이다.     HTML5 이전의 웹페이지들은 non-semantic tag…]]></description><link>https://samsara-ku.dev/etc/question/</link><guid isPermaLink="false">https://samsara-ku.dev/etc/question/</guid><pubDate>Sun, 03 May 2020 16:21:13 GMT</pubDate><content:encoded>&lt;h1 id=&quot;1-html-질문&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-html-%EC%A7%88%EB%AC%B8&quot; aria-label=&quot;1 html 질문 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. &lt;em&gt;HTML&lt;/em&gt; 질문&lt;/h1&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;div&quot;, &quot;section&quot;, &quot;article&quot;, &quot;nav&quot;, &quot;header&quot;, &quot;aside&quot; 태그의 차이점은? &lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+  W3C에서는 이 문제에 대해서 다음과 같이 설명한다.
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;A semantic element clearly describes its meaning to both the browser and the developer.
+Examples of non-semantic elements: &amp;lt;div&amp;gt; and &amp;lt;span&amp;gt; - Tells nothing about its content.
+Examples of semantic elements: &amp;lt;form&amp;gt;, &amp;lt;table&amp;gt;, and &amp;lt;article&amp;gt; - Clearly defines its content.  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  이해하기 쉽게 말하자면, &lt;strong&gt;의미가 있는 태그&lt;/strong&gt;와 &lt;strong&gt;의미가 없는 태그&lt;/strong&gt;를 구분하겠다는 설명이다.  &lt;/p&gt;
+&lt;p&gt;  HTML5 이전의 웹페이지들은 &lt;strong&gt;non-semantic tag&lt;/strong&gt;(&lt;code class=&quot;language-text&quot;&gt;div&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;span&lt;/code&gt; 등)와 &lt;code class=&quot;language-text&quot;&gt;id&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;class&lt;/code&gt;를 이용해서 구성을 했었다고 한다.  &lt;/p&gt;
+&lt;p&gt;  개발자들은 이 과정에서 큰 문제점을 알게 되었었는데, 많은 div와 span으로 구성되어있는 html 파일에서 가독성이 떨어지며 &lt;strong&gt;non-semantic tag&lt;/strong&gt;에 어떤것이 들어가는지 예상이 안되므로 코드의 보수가 힘들다는 점이였다.  &lt;/p&gt;
+&lt;p&gt;  그래서 HTML5에서는 &lt;strong&gt;semantic tag&lt;/strong&gt;, 즉 의미가 있는 태그들을 이용하여 코드의 가독성과 규격성을 높혀 코드의 보수를 쉽게 하도록 해주었다.&lt;/p&gt;
+&lt;p&gt;  이렇듯 &lt;strong&gt;semantic tag&lt;/strong&gt;들은 의미가 있는 태그들이며, W3C는 다음과 같은 폼을 제시해주고있다.  &lt;/p&gt;
+&lt;p&gt;  &lt;img src=&quot;https://t1.daumcdn.net/cfile/tistory/2545B83B594764122F&quot; alt=&quot;alt&quot;&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;form&quot; 태그에 있는 &quot;input&quot; 태그의 값을 서버에 전송할 때, &quot;JavaScript&quot; 를 사용하지 않고 전송하는 방법은? &lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;action: Form 태그 내부에 데이터를 보내는 URL을 지정한다.
+actocomplete: Form의 자동완성을 지정한다.
+enctype: 넘기려는 content의 타입을 지정하는데 사용한다.
+method: Form을 서버로 전송하는 http의 method를 지정한다.
+name: Form을 식별하기 위한 식별자로써 사용된다.
+target: action에서 지정한 스크립트 파일이 현재나 다른 위치에서 열리도록 지정한다.
+accepted-charset: Form에 전송될 문자의 인코딩을 지정한다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  위의 내용은 &lt;code class=&quot;language-text&quot;&gt;form&lt;/code&gt; 태그의 속성들이다.&lt;/p&gt;
+&lt;p&gt;  그러므로 &lt;code class=&quot;language-text&quot;&gt;form&lt;/code&gt;은 JavaScript으로도 서버에 정보를 보낼 수 있지만, &lt;code class=&quot;language-text&quot;&gt;form&lt;/code&gt; 태그의 속성인 &lt;code class=&quot;language-text&quot;&gt;action&lt;/code&gt;과 &lt;code class=&quot;language-text&quot;&gt;method&lt;/code&gt;를 이용하여 서버에 정보를 보낼 수 있다.  &lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;p&quot; 태그와 &quot;div&quot; 태그의 차이점은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+  다음과 같다.  
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;lt;p&amp;gt; : &amp;quot;문장의 단락(paragraph)&amp;quot;을 표시하기 위한 태그이다. &amp;lt;div&amp;gt; 태그를 포함할 수 없다.
+&amp;lt;div&amp;gt; : &amp;quot;구간의 구분(division)&amp;quot;을 표시하기 위한 태그이다. &amp;lt;p&amp;gt; 태그를 포함할 수 있다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;meta&quot; 태그의 역할은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;meta&lt;/code&gt; 태그는 &lt;strong&gt;웹 서버&lt;/strong&gt;와 &lt;strong&gt;웹 브라우저&lt;/strong&gt;간에 &lt;strong&gt;상호 교환되는 정보&lt;/strong&gt;를 정의하는데 사용된다.   &lt;/p&gt;
+&lt;p&gt;  HTML문서의 &lt;code class=&quot;language-text&quot;&gt;head&lt;/code&gt; 태그에 존재하며, 웹 사이트의 디자인에는 전혀 영향을 주지 않는다.  &lt;/p&gt;
+&lt;p&gt;  대신 문서를 누가 만들었고, 문서의 키워드는 무엇이며, 누가 만들었는지 등의 문서의 특성을 담고 있다.  &lt;/p&gt;
+&lt;p&gt;  이러한 &lt;code class=&quot;language-text&quot;&gt;meta&lt;/code&gt; 태그에는 3가지 속성이 존재하며, 그 내용은 다음과 같다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;1. http-equiv = &amp;quot;항목명&amp;quot;  
+웹 브라우저가 서버에 명령을 내리는 속성으로 name 속성을 대신하여 사용될 수 있으며, HTML 문서가 응답 헤더와 함께 웹 서버로부터 웹 브라우저에 전송되었을 때에만 의미를 갖습니다.  
+
+2. content = &amp;quot;정보값&amp;quot;
+meta 정보의 내용을 지정합니다.  
+
+3. name = &amp;quot;정보 이름&amp;quot;
+몇 개의 meta 정보의 이름을 정할 수 있으며 지정하지 않으면 http-equiv 와 같은 기능을 합니다. &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  다음과 같은 속성을 이용하여 웹 페이지의 제목, 제작일, 언어, 브라우저 호환성 등 여러 가지를 다룰 수 있다.&lt;/p&gt;
+&lt;p&gt;  자세한 내용은 &lt;a href=&quot;https://webclub.tistory.com/354&quot; title=&quot;메타태그 설명&quot;&gt;다음&lt;/a&gt;을 참고하면 될 것 같다.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;script&quot; 태그를 &quot;head&quot; 태그에 넣는 것과 &quot;body&quot; 태그에 넣는 것의 차이는?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;script&lt;/code&gt;태그는 보통 JavaScript파일을 &lt;code class=&quot;language-text&quot;&gt;import&lt;/code&gt;하기 위하여 사용되는 태그이며, 이렇게 &lt;code class=&quot;language-text&quot;&gt;import&lt;/code&gt;된 파일들은 순서에 따라 실행된다.  &lt;/p&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;script&lt;/code&gt;태그는 &lt;code class=&quot;language-text&quot;&gt;head&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;body&lt;/code&gt;태그의 사이 또는 &lt;code class=&quot;language-text&quot;&gt;body&lt;/code&gt;의 마지막 부분에 넣을 수 있다. &lt;/p&gt;
+&lt;p&gt;  위의 두 방법은 큰 차이가 존재하는데, 이유는 &lt;strong&gt;브라우저의 렌더링 방식&lt;/strong&gt;에 존재한다. 브라우저의 렌더링 방식은 다음과 같다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;1. HTML을 읽기 시작한다.
+2. HTML을 파싱한다 (parsing: 컴퓨터가 읽을 수 있는 코드로 바꾸는 작업)
+3. DOM 트리 생성.
+4. Render 트리가 생성 (DOM tree + CSS의 CSSOM 트리 결합)
+5. Display(브라우저)에 표시된다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  이 과정에서 우리는 &lt;strong&gt;1번, 2번 과정&lt;/strong&gt;을 주의해야만 한다. &lt;/p&gt;
+&lt;p&gt;  1번과 2번 과정에서 브라우저는 HTML 요소를 차례대로 읽어가면서 파싱하는데, 이 과정에서 &lt;code class=&quot;language-text&quot;&gt;script&lt;/code&gt;태그를 만나게 된다면 파싱을 중단한다.&lt;/p&gt;
+&lt;p&gt;  그러고 나서 바로 script 태그의 소스 파일을 찾아 JavaScript 코드를 모두 실행하고 다시 파싱을 진행하게 된다.&lt;/p&gt;
+&lt;p&gt;  이러는 과정에서 생기는 문제점은 다음과 같다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;1. JavaScript Code의 실행으로 인한, Rendering Delay
+2. Rendering Delay로 인한 DOM 조작 불가능 상황에서의 DOM 조작 코드 실행&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  특히 우리는 &lt;strong&gt;2번 상황&lt;/strong&gt;에 대해 고민을 해야 할 필요가 있는데, DOM이 트리가 생성되기 전에 DOM에 접근하려고 하면 &lt;code class=&quot;language-text&quot;&gt;undefined&lt;/code&gt;값이 리턴되므로 모든 코드가 실행이 안 될 것이다.&lt;/p&gt;
+&lt;p&gt;  위와 같은 이유로 우리는 일반적으로, script 태그를 &lt;code class=&quot;language-text&quot;&gt;head&lt;/code&gt;태그보다는 &lt;code class=&quot;language-text&quot;&gt;body&lt;/code&gt;태그의 최하단 부분에 위치시키는 일이 많다.&lt;/p&gt;
+&lt;p&gt;  한편, 위와 같은 방법을 사용하지 않고서도 해결하는 방법들이 존재한다. 바로 &lt;code class=&quot;language-text&quot;&gt;script&lt;/code&gt;태그의 &lt;code class=&quot;language-text&quot;&gt;async&lt;/code&gt;속성과 &lt;code class=&quot;language-text&quot;&gt;defer&lt;/code&gt;속성을 사용하는 방법이다.&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;이를 사용한다면 HTML 파싱과 script의 로드가 동시에 실행된다!&lt;/strong&gt;&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;e.g)  &amp;lt;script async src=&amp;quot;index.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+      &amp;lt;script defer src=&amp;quot;index.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;async&lt;/code&gt;의 경우에는 HTML의 파싱이 모두 끝나지 않더라도, &lt;code class=&quot;language-text&quot;&gt;script&lt;/code&gt;의 로드가 완료되는 즉시 실행시킨다.
+&lt;code class=&quot;language-text&quot;&gt;defer&lt;/code&gt;의 경우에는 HTML의 파싱이 모두 끝난 후에 &lt;code class=&quot;language-text&quot;&gt;script&lt;/code&gt;의 실행이 이루어지게 한다. &lt;/p&gt;
+&lt;p&gt;  추가로 &lt;code class=&quot;language-text&quot;&gt;async&lt;/code&gt;의 경우에는, 비동기적으로 여러 스크립트를 실행되므로 일관된 실행 순서를 보장시켜주지 못한다. 동기적으로 실행시키기를 원한다면 &lt;code class=&quot;language-text&quot;&gt;async=false&lt;/code&gt;를 사용하여 실행시키면 된다. &lt;/p&gt;
+&lt;p&gt;  또한 &lt;code class=&quot;language-text&quot;&gt;async&lt;/code&gt;는 HTML 파싱과 동시에 스크립트 로드를 하지만 스크립트 실행은 HTML 파싱이 중지된 상태에서 되기 때문에 중간에 HTML 파싱이 멈추는 시점이 생길 수 있다. 다만 실행 순서를 감안해야 한다.&lt;/p&gt;
+&lt;p&gt;  그리고 &lt;code class=&quot;language-text&quot;&gt;defer&lt;/code&gt;는 HTML 파싱과 동시에 스크립트를 불러오고 HTML 파싱이 완료 된 후 스크립트가 실행된다. 위에서 설명한 &lt;code class=&quot;language-text&quot;&gt;script&lt;/code&gt; 태그가 &lt;code class=&quot;language-text&quot;&gt;body&lt;/code&gt; 태그의 최하단에 위치해야 하는 이유에 모두 적합하다.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;h1 id=&quot;2-javascript-질문&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-javascript-%EC%A7%88%EB%AC%B8&quot; aria-label=&quot;2 javascript 질문 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. &lt;em&gt;JavaScript&lt;/em&gt; 질문&lt;/h1&gt;
+&lt;details&gt;
+&lt;summary&gt; &quot;===&quot; 와 &quot;==&quot; 의 차이는?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;===&lt;/code&gt;과 &lt;code class=&quot;language-text&quot;&gt;==&lt;/code&gt;는 같은 목적을 추구하지만, 다른 기능을 지원한다.&lt;/p&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;==&lt;/code&gt;는 좌항과 우항의 &lt;strong&gt;값&lt;/strong&gt;만을 비교한다. 만약 &lt;code class=&quot;language-text&quot;&gt;1 == &amp;quot;1&amp;quot;&lt;/code&gt;과 같은 표현이 있다 하면, 그 값은 &lt;code class=&quot;language-text&quot;&gt;true&lt;/code&gt;이다. 왜냐하면, 좌항과 우항의 &lt;strong&gt;값&lt;/strong&gt;이 모두 “1”이기 때문이다. 타입은 상관하지 않는다.&lt;/p&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;===&lt;/code&gt;는 좌항과 우항의 &lt;strong&gt;값&lt;/strong&gt;뿐만 아니라, &lt;strong&gt;타입&lt;/strong&gt;도 비교한다. 만약 &lt;code class=&quot;language-text&quot;&gt;1 == &amp;quot;1&amp;quot;&lt;/code&gt;과 같은 표현이 있다 하면, 그 값은 &lt;code class=&quot;language-text&quot;&gt;false&lt;/code&gt;이다. 왜냐하면, 좌항과 우항의 &lt;strong&gt;값&lt;/strong&gt;은 모두 “1”이지만, 좌항의 타입은 &lt;code class=&quot;language-text&quot;&gt;Number&lt;/code&gt;이고, 우항의 타입은 &lt;code class=&quot;language-text&quot;&gt;String&lt;/code&gt;이기 때문이다.&lt;/p&gt;
+&lt;p&gt;  그렇다면 &lt;code class=&quot;language-text&quot;&gt;null == undefined&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;null === undefined&lt;/code&gt;는 어떨까?&lt;/p&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;null&lt;/code&gt;과 &lt;code class=&quot;language-text&quot;&gt;undefined&lt;/code&gt;는 같이 값이 없음을 내포하지만 &lt;code class=&quot;language-text&quot;&gt;null&lt;/code&gt;은 &lt;strong&gt;값이 없음을 명시적으로 표현한 형태&lt;/strong&gt;이고 &lt;code class=&quot;language-text&quot;&gt;undefined&lt;/code&gt;는 &lt;strong&gt;값이 없음을 암시적으로 표현한 형태&lt;/strong&gt;이다.&lt;/p&gt;
+&lt;p&gt;  그래서 &lt;code class=&quot;language-text&quot;&gt;null == undefined&lt;/code&gt;는 &lt;code class=&quot;language-text&quot;&gt;true&lt;/code&gt;이고 &lt;code class=&quot;language-text&quot;&gt;null === undefined&lt;/code&gt;는 &lt;code class=&quot;language-text&quot;&gt;false&lt;/code&gt;를 반환하게 된다.&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;그러므로 더 엄격한 비교가 필요하다면 &lt;code class=&quot;language-text&quot;&gt;===&lt;/code&gt;, 값만 비교한다면 &lt;code class=&quot;language-text&quot;&gt;==&lt;/code&gt;를 사용하자.&lt;/strong&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt; &quot;typeof&quot;와 &quot;instanceof&quot;의 차이점은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;typeof&lt;/code&gt;와 &lt;code class=&quot;language-text&quot;&gt;instanceof&lt;/code&gt;도 2.1의 문제처럼 같은 목적을 추구하지만, 다른 기능을 지원한다.&lt;/p&gt;
+&lt;p&gt;  우선 &lt;code class=&quot;language-text&quot;&gt;typeof&lt;/code&gt;는 &lt;strong&gt;unary operator&lt;/strong&gt;이며, 리턴 값은 각 변수의 &lt;strong&gt;primitive type&lt;/strong&gt;을 &lt;code class=&quot;language-text&quot;&gt;String&lt;/code&gt; 타입을 가진 값으로 준다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;e.g)  
+  typeof 3; // === &amp;#39;number&amp;#39; 
+  typeof &amp;#39;str&amp;#39;; // === &amp;#39;string&amp;#39; 
+  typeof {}; // === &amp;#39;object&amp;#39; 
+  typeof []; // === &amp;#39;object&amp;#39; 
+  typeof function () {}; // === &amp;#39;function&amp;#39; 
+  typeof null; // === &amp;#39;object&amp;#39;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;instanceof&lt;/code&gt;는 &lt;strong&gt;binary operator&lt;/strong&gt;이며, 리턴 밸류는 각 변수의 &lt;strong&gt;prototype의 chain&lt;/strong&gt;을 비교한 뒤 &lt;code class=&quot;language-text&quot;&gt;Boolean&lt;/code&gt;으로 준다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;e.g) 
+  &amp;quot;foo&amp;quot; instanceof String; // === false 
+  &amp;quot;foo&amp;quot; instanceof Object; // === false
+  
+  true instanceof Boolean; // === false 
+  true instanceof Object; // === false
+
+  [0,1] instanceof Array; // === true 
+  {0:1} instanceof Object; // === true
+
+  var color1 = new String(&amp;quot;red&amp;quot;); 
+  var color2 = &amp;quot;red&amp;quot;; 
+
+  color1 == color2; // === true 
+  color1 instanceof String; // === true 
+  color2 instanceof String; // === 무엇일까요?&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  위의 내용을 보고 점검을 해보자. 마지막의 답은 무엇일까? 답은 바로 &lt;code class=&quot;language-text&quot;&gt;false&lt;/code&gt;이다. 만약 답을 맞히지 못했다면 &lt;a href=&quot;https://poiemaweb.com/js-prototype&quot; title=&quot;프로토타입에 관한 설명&quot;&gt;다음&lt;/a&gt;을 읽고 다시 보자.  &lt;/p&gt;
+&lt;p&gt;  이와 관련된 내용인, 프로토타입에 관한 내용은 &lt;a href=&quot;#&quot; title=&quot;프로토타입 정리 포스트&quot;&gt;JavaScript 포스트&lt;/a&gt;를 따로 만들어서 다뤄볼 예정이다.&lt;/p&gt;
+&lt;p&gt;  &lt;a href=&quot;https://unikys.tistory.com/260&quot; title=&quot;포스트 예제 링크&quot;&gt;예시 출처&lt;/a&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt; 
+&lt;details&gt;
+&lt;summary&gt; &quot;JavaScript&quot;에서 &quot;객체를 정의&quot;하는 방법은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;h3 id=&quot;1-객체-리터럴&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EA%B0%9D%EC%B2%B4-%EB%A6%AC%ED%84%B0%EB%9F%B4&quot; aria-label=&quot;1 객체 리터럴 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 객체 리터럴&lt;/h3&gt;
+&lt;p&gt;  별 다른 문법 없이 중괄호만을 사용하여 선언하는 방식을 객체 리터럴이라고 말한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  var object = {
+    name: &amp;quot;Yunhoe&amp;quot;,
+    age: 23,
+    gender: &amp;quot;male&amp;quot;
+  }&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;2-object-생성자-함수&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-object-%EC%83%9D%EC%84%B1%EC%9E%90-%ED%95%A8%EC%88%98&quot; aria-label=&quot;2 object 생성자 함수 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Object 생성자 함수&lt;/h3&gt;
+&lt;p&gt;  Object의 생성자 함수인, new Object()를 사용해서 선언하는 방식이다. &lt;code class=&quot;language-text&quot;&gt;new Object()&lt;/code&gt;로 선언한 객체는 초기에 비어있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  var object = new Object(); // Empty object
+
+  object.name = &amp;quot;Yunhoe&amp;quot;;
+  object.age = 23;
+  object.gender = &amp;quot;male&amp;quot;;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;3-생성자-함수&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-%EC%83%9D%EC%84%B1%EC%9E%90-%ED%95%A8%EC%88%98&quot; aria-label=&quot;3 생성자 함수 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. 생성자 함수&lt;/h3&gt;
+&lt;p&gt;  Java나 C++의 &lt;code class=&quot;language-text&quot;&gt;class&lt;/code&gt;와 매우 비슷한 형식이다. 말 그대로 생성자 함수를 사용하여 객체를 선언하는 방식이다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  function person(name, age, gender){
+    this.name = name;
+    this.age = age;
+    this.gender = gender;
+  }
+
+  var object = new person(&amp;quot;Yunhoe&amp;quot;, 23, &amp;quot;male&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h3 id=&quot;4-class-함수&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-class-%ED%95%A8%EC%88%98&quot; aria-label=&quot;4 class 함수 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. Class 함수&lt;/h3&gt;
+&lt;p&gt;  ES6부터 추가 된 문법으로, 우리가 흔히들 알고있는 &lt;code class=&quot;language-text&quot;&gt;class&lt;/code&gt;의 사용을 편하게 하고자 만든 문법이다.  &lt;/p&gt;
+&lt;p&gt;  그렇다고 이 &lt;code class=&quot;language-text&quot;&gt;class&lt;/code&gt;는 javascript의 기존 모델인 &lt;code class=&quot;language-text&quot;&gt;프로토타입 기반 객체지향 모델&lt;/code&gt;을 폐기한게 아니다.   &lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;기존 프로토타입 기반 패턴의 &lt;a href=&quot;https://en.wikipedia.org/wiki/Syntactic_sugar&quot;&gt;Syntatic Sugar&lt;/a&gt;임을 알아야 한다&lt;/strong&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  class person {
+    constructor(name, age, gender){
+      this.name = name;
+      this.age = age;
+      this.gender = gender;
+    }
+  }
+
+  var object = new person(&amp;quot;Yunhoe&amp;quot;, 23, &amp;quot;male&amp;quot;);&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;HTTP 전송 방식(&quot;Method&quot;)의 종류는?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+&lt;h2 id=&quot;1-get&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-get&quot; aria-label=&quot;1 get permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. GET&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;가장 흔하게 사용되는 method로써, 서버에 존재하는 resource를 request하는데 사용된다.  
+
+서버는 response로 body에 resource의 content를 실어서 보낸다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;2-head&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-head&quot; aria-label=&quot;2 head permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. HEAD&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;GET method와 비슷하게 서버에 resource를 request하지만, response로 header만 받는다.  
+
+HEAD를 사용하면 resource를 request하지 않아도 object의 존재를 확인할 수 있고 수정이 되었는지도 확인 할 수 있다. 
+
+개인적으로 GET의 find 버전이라고 생각한다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;3-put&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-put&quot; aria-label=&quot;3 put permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. PUT&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;GET method의 정반대로 서버에 문서를 쓸 때 사용한다.   
+
+PUT method는 서버가 client의 request body를 확인하고, 만약 서버에 해당 request에 관련된 URL이 존재한다면 replace하고 그렇지 않으면 create한다.  
+
+해당 method는 URL을 직접 수정하므로, 웹 사이트를 변조할 수 있으므로 사용자 인증 과정을 거쳐야만 할 것이다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;4-post&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-post&quot; aria-label=&quot;4 post permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. POST&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;PUT method와 비슷하게 서버에 resource data를 HTML폼을 이용하여 전송할 때 사용한다.  
+
+그러나 PUT method와 다른 점이 있는데, 바로 멱등성(idempotency)의 차이이다.  
+
+동일한 요청을 한 번 보내는 것과 여러 번 연속으로 보내는 것이 같은 효과를 지니고, 서버의 상태도 동일하게 남을 때, 해당 HTTP 메서드가 멱등성을 가졌다고 말한다. 
+
+결론적으로 둘의 차이라는것은, PUT method는 멱등성을 가졌지만 POST method는 멱등성을 가지고 있지 않다는 것이다.  
+
+해당 내용은 추후에 다른 포스트를 통하여 자세히 다루어 볼 예정이다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;5-trace&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#5-trace&quot; aria-label=&quot;5 trace permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;5. TRACE&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Client의 request는 firewall, proxy server, gateway 등을 거치면서 수정될 수 있는 여지가 존재한다.  
+
+TRACE method는 위의 단계들을 거치고 나서 최종 목적지(서버)에 도착했을 때의 request는 어떻게 생겼을지를 보여주는 method이다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;6-options&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#6-options&quot; aria-label=&quot;6 options permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;6. OPTIONS&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;OPTIONS method는 서버가 어떠한 method들을 지원해주는지 확인하는 method이다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2 id=&quot;7-delete&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#7-delete&quot; aria-label=&quot;7 delete permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;7. DELETE&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;DELETE method는 request에 기재된 URL에 해당되는 resource를 삭제할 수 있도록 하는 method이다.  
+
+주의해야할 점은, HTTP 명세에서 서버가 클라이언트에게 DELETE request를 무시할 수 있으므로 100% 삭제가 됨을 보장하지 못한다는 점이다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;Promise&quot;, &quot;Callback&quot; 패턴은 각각 무엇이며, 차이점은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  둘 다 JavaScript의 특성 때문에 생기는 문제인 &lt;strong&gt;비동기적 처리&lt;/strong&gt;를 위한 패턴이다.&lt;/p&gt;
+&lt;p&gt;  예시를 하나 들어보자. 만약 당신이 웹 사이트를 운영하고, 그 사이트에서 다양한 기능들을 구현해놨는데 그것들이 비동기적으로 처리되지 않는다고 가정해보자.&lt;/p&gt;
+&lt;p&gt;  그렇게 되면 정말 끔찍하게 될 것이다. 당신의 웹 사이트의 이용자들은, 단순히 좋아요를 누름에도 그것을 처리하기 위한 시간 동안 다른 게시글들을 보지 못하게 될 거다.&lt;/p&gt;
+&lt;p&gt;  그리고 하나 더 예시를 들어보자. 만약 당신의 웹 사이트가 요청과 응답이 모두 비동기적으로 작동한다고 말이다. 어떤 상황이 일어날까?&lt;/p&gt;
+&lt;p&gt;  당신의 웹 사이트 이용자들은 비동기적인 요청에 만족할 것이다. 댓글을 달고 동시에 좋아요도 누를 수 있고. 그러나 한 가지 문제점이 있다. 당신의 코드에 말이다.&lt;/p&gt;
+&lt;p&gt;  일반적으로 사람들은 동기적으로 코드를 짜기 마련이다. 순차적인 흐름이 있다는 것이다. 로그인으로 예를 들어보면, 로그인 창이 나오고 그 이후에 입력하고 그 이후에 제출하고 그 이후에 인증하고 등등..&lt;/p&gt;
+&lt;p&gt;  그런데 만약 비동기적으로 응답이 도착한다면 어떻게 될까? 당신의 코드는 순차적 실행을 보장하지 못하기 때문에 코드를 읽기에도, 유지 및 보수하는게 힘들 것이다.&lt;/p&gt;
+&lt;p&gt;  이를 해결하기 위하여 존재하는 것들이 &lt;strong&gt;Callback&lt;/strong&gt;과 &lt;strong&gt;Promise&lt;/strong&gt;이다.&lt;/p&gt;
+  &lt;details&gt;
+  &lt;summary&gt;Callback Pattern&lt;/summary&gt;
+  &lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+  아래의 코드를 보고 한 번 결과를 생각해보자.
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;function getData() {
+  var data;
+
+  axios.get(&amp;#39;https://idonknowurl.com/posts/1&amp;#39;, function(response) {
+  data = response;
+  });
+
+  return data;
+}
+
+console.log(getData()); // undefined&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  C, C++, java 그리고 python과 같은 언어에서는 이해가 가기 어려운 결과이다. 왜 undefined가 나올까? 이유는 위에서도 말했지만, JavaScript가 &lt;strong&gt;비동기적&lt;/strong&gt;으로 작동하기 때문이다.  &lt;/p&gt;
+&lt;p&gt;  즉, JavaScript는 axios.get의 실행 결과를 기다리지 않고 바로 실행한다는 것이다. 그렇기 때문에, 우리는 &lt;strong&gt;비동기적 처리&lt;/strong&gt;에 대해서 생각을 해야만 했고, 그것의 해결방안이 callback pattern인 것이다.&lt;/p&gt;
+&lt;p&gt;  여기서 Callback pattern은 말 그대로 callback 함수를 사용하는 패턴이다. 그렇다면 Callback 함수는 무엇일까?&lt;/p&gt;
+&lt;p&gt;  말 그대로 “callback”, 나중에 특정 event나 point에서 부르겠다는 함수이다. 우리는 이 함수패턴을 이용해서 위와 같은 문제를 다음과 같게 해결할 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;function getData(callback) {
+  axios.get(&amp;#39;https://idonknowurl.com/posts/1&amp;#39;, 
+    function(response) {
+      callback(response)
+    });
+}
+
+getData(function(Data) {
+  console.log(Data)
+});&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  이렇게 콜백 함수를 사용하면 특정 로직이 끝났을 때 원하는 동작을 실행시킬 수 있다.&lt;/p&gt;
+&lt;p&gt;  그런데, 이렇게 좋은 Callback을 남발하게 된다면 “Callback Hell”이라는 문제가 일어나게 된다.&lt;/p&gt;
+&lt;p&gt;  비동기 처리를 위해서 콜백 뒤에 콜백, 그리고 콜백.. 이런 방법으로 코드를 짜다 보면 아래와 같은 기괴한 구조의 코드를 볼 수 있게 된다. 이를 우리는 “Callback Hell”이라고 부른다.  &lt;/p&gt;
+&lt;p&gt;  Callback Hell이 문제인 이유는 가독성의 하락, 로직 변경의 어려움, 코드 실행 순서 파악의 어려움, 그리고 코드의 유지 및 보수가 힘들기 때문이다.&lt;/p&gt;
+&lt;p&gt;  &lt;img src=&quot;http://cfile7.uf.tistory.com/image/9951A34F5B5ADFC3019F6A&quot; alt=&quot;Callback_Hell&quot;&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Callback Hell의 무서움을 잘 표현해주는 사진&lt;/p&gt;
+&lt;/blockquote&gt;
+  &lt;/div&gt;
+  &lt;/details&gt;
+  &lt;details&gt;
+  &lt;summary&gt;Promise Pattern&lt;/summary&gt;
+  &lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  그렇다면 저런 문제가 생기는 callback 패턴을 울며 겨자먹기로 사용해야 할까? 다행히도 &lt;strong&gt;Promise&lt;/strong&gt;라는 대안이 존재한다. 그렇다면 &lt;strong&gt;Promise&lt;/strong&gt;는 무엇일까? &lt;/p&gt;
+&lt;p&gt;  &lt;a href=&quot;https://medium.com/javascript-scene/master-the-javascript-interview-what-is-a-promise-27fc71e77261&quot; title=&quot;프로미스 설명&quot;&gt;다음&lt;/a&gt;의 사이트에서는 Promise를 아래와 같이 설명한다.  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;A promise is an object that may produce a single value some time in the future&lt;/em&gt;  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  쉽게 말하자면, Promise는 비동기 처리를 위한 객체이다. 비동기 처리한 결과값의 저장소로써, 이후의 과정과 연결하기 위한 일종의 징검다리 역할을 해준다.  &lt;/p&gt;
+&lt;p&gt;  Promise는 callback과 동일하게 비동기 처리를 위한 로직이지만, callback과 다른점이 있다. 바로 &lt;strong&gt;상태&lt;/strong&gt;가 있다는 점이다. 한 번 알아보자.&lt;/p&gt;
+&lt;p&gt;  Promise는 다음과 같은 3가지 상태가 존재한다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;대기(pending) : 이행되거나 거부되지 않은, 초기의 상태 &lt;/li&gt;
+&lt;li&gt;이행(fulfilled) : 연산이 성공적으로 완료됨  &lt;/li&gt;
+&lt;li&gt;거부(rejected) : 연산이 실패함  &lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;  &lt;img src=&quot;https://media.prod.mdn.mozit.cloud/attachments/2014/09/18/8633/51a934a714e191f53e588bff719bc321/promises.png&quot; alt=&quot;Promise_map&quot;&gt;&lt;/p&gt;
+&lt;p&gt;  이 상태를 Promise의 분기점으로 삼아, 비동기적 처리를 좀 더 효율적으로 진행할 수 있다. 위에서 아래로 가는 일반적인 코드 순서를 보장할 수 있으며, 가독성이 올라가므로 코드의 유지 및 보수가 쉽게 되기 때문이다.&lt;/p&gt;
+&lt;p&gt;  결과적으로 callback에서 나온 코드를 다음과 같이 변경할 수 있게 된다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;function getData() {
+  return new Promise(function(resolve, reject) {
+    axios.get(&amp;#39;https://idonknowurl.com/posts/1&amp;#39;, function(response) {
+      if (response) {
+        resolve(response);
+      }
+      reject(new Error(&amp;quot;Request is failed&amp;quot;));
+    });
+  });
+}
+
+getData()
+.then(function(data) {
+  console.log(data); // response 값 출력
+})
+.catch(function(err) {
+  console.error(err); // Error 출력
+});&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;/details&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;async&quot;, &quot;await&quot;과 &quot;Promise&quot;의 차이점은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  위의 문제와 비슷한 느낌처럼, Callback과 Promise와 Async&amp;#x26;await 모두 JavaSscript의 비동기 처리를 위해서 사용되는 기법들이다.  &lt;/p&gt;
+&lt;p&gt;  하지만 Callback과 Promise가 차이가 있듯이, Promise와 Async&amp;#x26;Await도 차이가 존재하기 마련이다. 그 차이의 정보는 &lt;a href=&quot;https://medium.com/@constell99/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EC%9D%98-async-await-%EA%B0%80-promises%EB%A5%BC-%EC%82%AC%EB%9D%BC%EC%A7%80%EA%B2%8C-%EB%A7%8C%EB%93%A4-%EC%88%98-%EC%9E%88%EB%8A%94-6%EA%B0%80%EC%A7%80-%EC%9D%B4%EC%9C%A0-c5fe0add656c&quot; title=&quot;Promise_and_async&amp;#x26;await_차이&quot;&gt;다음&lt;/a&gt;의 사이트를 참고하였다.  &lt;/p&gt;
+&lt;h3 id=&quot;1-간결함과-깔끔함&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EA%B0%84%EA%B2%B0%ED%95%A8%EA%B3%BC-%EA%B9%94%EB%81%94%ED%95%A8&quot; aria-label=&quot;1 간결함과 깔끔함 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 간결함과 깔끔함&lt;/h3&gt;
+&lt;p&gt;  우리는 Promise를 사용하여 비동기 로직을 처리할 때 then()과 catch(), resolve()와 reject()를 사용하여 구성을 하였다. Callback hell을 피하기 위한 장치이기도 하였고, 실제로 보기에 깔끔하다. &lt;/p&gt;
+&lt;p&gt;  그러나 async&amp;#x26;await을 사용하면, promise보다 더 깔끔한 코드를 생성할 수 있다. 우리는 단지 비동기 로직을 처리하기 위한 함수의 앞에 async를 붙히고, 내부의 비동기 처리 부분에 await을 붙히기만 하면 된다. &lt;/p&gt;
+&lt;p&gt;  심지어 return의 형식도 promise로 반환되어 나오기 때문에, 이전에 promise를 사용하는 사람들이 손쉽게 사용할 수 있도록 구상되었다. &lt;/p&gt;
+&lt;h3 id=&quot;2-에러-핸들링&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EC%97%90%EB%9F%AC-%ED%95%B8%EB%93%A4%EB%A7%81&quot; aria-label=&quot;2 에러 핸들링 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 에러 핸들링&lt;/h3&gt;
+&lt;p&gt;  Promise 내부에서 에서 나오는 error를 처리하기 위해서는, &lt;code class=&quot;language-text&quot;&gt;try/catch&lt;/code&gt; 구문을 사용할 수 없다. 왜냐하면 그 error는 &lt;strong&gt;Promise&lt;/strong&gt; 내부에서 나온 error이기 때문이다.  &lt;/p&gt;
+&lt;p&gt;  만약 당신이 그러한 error를 잡고싶다면, 그 error 처리문은 promise 내부에 들어가 있어야만 한다. &lt;/p&gt;
+&lt;p&gt;  그러나 만약 async&amp;#x26;await을 사용하게 된다면, 걱정할 필요가 없다. 해당 구문은, &lt;code class=&quot;language-text&quot;&gt;try/catch&lt;/code&gt;구문으로 error를 검출할 수 있기 떄문이다! &lt;/p&gt;
+&lt;h3 id=&quot;3-nested-code-해결&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-nested-code-%ED%95%B4%EA%B2%B0&quot; aria-label=&quot;3 nested code 해결 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. Nested code 해결&lt;/h3&gt;
+&lt;p&gt;  Promise의 결과값을 받고, 그 결과물을 받아서 또 Promise를 반환하고 그 결과물을 받아서 또 Promise를 반환하는 코드가 있다고 생각하자.  &lt;/p&gt;
+&lt;p&gt;  예시는 아래와 같다. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const makeRequest = () =&amp;gt; {
+  return promise1()
+    .then(value1 =&amp;gt; {
+      return promise2(value1)
+        .then(value2 =&amp;gt; {
+          return promise3(value1, value2)
+        })
+    })
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  이러한 Nested된 promise는 꼬리에 꼬리를 무는, 마치 Callback hell과도 비슷한 경험을 선사해준다.  &lt;/p&gt;
+&lt;p&gt;  만약 이런 상황을 async&amp;#x26;await으로 해결한다면? 꽤나 간단하게 줄여진다. 예시는 다음과 같다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;const makeRequest = async () =&amp;gt; {
+  const value1 = await promise1()
+  const value2 = await promise2(value1)
+  return promise3(value1, value2)
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;Event Bubbling&quot;과 &quot;Capture&quot;란? (미완)&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;  
+&lt;p&gt;  해당 문서는 &lt;a href=&quot;https://joshua1988.github.io/web-development/javascript/event-propagation-delegation/&quot; title=&quot;이벤트에 대한 설명&quot;&gt;다음&lt;/a&gt;을 침고하였다.&lt;/p&gt;
+&lt;p&gt;  JavaScript에는 이벤트를 감지하는 방식이 2가지가 존재하는데, 그 2가지가 바로 Event Bubbling/Event Capture이다. &lt;/p&gt;
+&lt;p&gt;  Event Bulbbing: 특정화면 요소에서 이벤트가 발생했을 때, 해당 요소의 이벤트가 해당 요소의 상위 요소로 전파되는 특성&lt;/p&gt;
+&lt;p&gt;  이벤트 캡쳐: 이벤트 버블링의 정 반대의 방식. 상위 요소에서 하위 요소로 퍼져나감을 의미함. &lt;/p&gt;
+&lt;p&gt;  +) event.stopPropagation(), Event Delegation&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;이와 같은 하위에서 상위 요소로의 이벤트 전파 방식을 이벤트 버블링(Event Bubbling)이라고 합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;h1 id=&quot;3-vuejs-질문&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-vuejs-%EC%A7%88%EB%AC%B8&quot; aria-label=&quot;3 vuejs 질문 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. &lt;em&gt;Vue.js&lt;/em&gt; 질문&lt;/h1&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;Mixin&quot;이란?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  Vue에서는 재사용이 가능한 부분들을 자주 언급한다. Mixin도 &lt;strong&gt;재사용&lt;/strong&gt;에 초점을 맞춘 기능 중 하나이다.&lt;/p&gt;
+&lt;p&gt;  Mixin은 반복적으로 사용되는 컴포넌트의 옵션들을 위한 기능인데, 컴포넌트에 mixin으로 선언한 변수들을 주입하게 된다면 해당 컴포넌트는 mixin의 옵션을 그대로 가져간다. 말 그대로 “mix-in”, &lt;strong&gt;섞여 들어간다&lt;/strong&gt;는 것이다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;var myMixin = {
+  created: function () {
+    this.hello()
+  },
+  methods: {
+    hello: function () {
+      console.log(&amp;#39;hello from mixin!&amp;#39;)
+    }
+  }
+}
+
+var Component = Vue.extend({
+  mixins: [myMixin]
+})
+
+var component = new Component() // =&amp;gt; &amp;quot;hello from mixin!&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  Vue 객체를 extend한 component에 mixin값으로 myMixin을 할당해주니 myMixin의 특성을 가져가게 되었다. &lt;strong&gt;Mix-in&lt;/strong&gt;된 것이다!&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;EventBus&quot;란?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  Vue의 eventbus는 다음과 같은 상황에서 사용한다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Vue의 부모와 자식(Parent and child)는 데이터를 props와 event의 형식으로 주고 받는다. 그런데 만약 내가 부모에게서 변수를 자식의 자식의 자식의 자식의 자식의 자식에게 주려면..?? 이 모든것을 props로 연결시켜서 전달해주는 방법이 정말 합리적일까?  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  이러한 상황에서 좀 더 자유롭게 컴포넌트끼리 통신을 할 수 있게 만드는 방법이 바로 &lt;strong&gt;eventbus&lt;/strong&gt;이다. 어떻게 쓰는지는 다음 방법을 보자.  &lt;/p&gt;
+&lt;p&gt;  (componentA.vue)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Vue.prototype.EventBus = new Vue();
+
+export default {
+  name: &amp;#39;componentA&amp;#39;,
+  methods: {
+    showMsg: function() {
+      this.EventBus.$emit(&amp;#39;alertMessage&amp;#39;, &amp;#39;Hello&amp;#39;);
+    });
+  }
+}  &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  (componentB.vue)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Vue.prototype.EventBus = new Vue();
+export default {
+  name: &amp;#39;componentB&amp;#39;,
+  mounted: function() {
+    this.EventBus.$on(&amp;#39;alertMessage&amp;#39;, function(payload) {
+      console.log(payload)
+    });
+  }
+}&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  해당 예제는 &lt;a href=&quot;https://webisfree.com/2018-12-03/%5Bvuejs%5D-eventbus%EB%A5%BC-%EC%82%AC%EC%9A%A9-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-%EB%8D%B0%EC%9D%B4%ED%84%B0-%EC%A3%BC%EA%B3%A0%EB%B0%9B%EB%8A%94-%ED%86%B5%EC%8B%A0-%EB%B0%A9%EB%B2%95&quot; title=&quot;eventbus 설명&quot;&gt;다음&lt;/a&gt;에서 가져왔으며 설명은 다음과 같다.  &lt;/p&gt;
+&lt;p&gt;  공통으로 사용되는 Vue.prototype.EventBus 객체를 이용하여, “componentA”에서는 event를 emit하고 “componentB”에서는 event를 listen하여 “componentA”에서 전달받은 변수인 ‘Hello’를 payload로 받아 출력한다. &lt;/p&gt;
+&lt;p&gt;  이렇듯 eventbus는 component간의 자유로운 통신을 허락해주도록 하지만, 전역 범위로 사용이 가능하기 때문이 &lt;strong&gt;데이터 충돌&lt;/strong&gt;에 주의해서 사용해야만 하는 단점이 있다. &lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;Component LifeCycle&quot; 이란?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  Vue에서는 component뿐만 아니라 instance들도 &lt;strong&gt;Lifecycle&lt;/strong&gt;을 가지고 있다.  &lt;/p&gt;
+&lt;p&gt;  Vue의 Lifecycle이 무엇이냐면, 말 그대로 component나 instance들의 &lt;strong&gt;생명주기&lt;/strong&gt;이다. 생성될 때부터 파괴되는 시점까지의 과정들을 거치는 것을 설명하는 개념이다.  &lt;/p&gt;
+&lt;p&gt;  크게 created, mounted, updated, destroyed의 4가지 구성으로 볼 수 있으며 이 주기들을 이름으로 갖는 함수를 이용해서 특정 lifecycle에 특정 method들을 부를 수 있게 허용해준다.&lt;/p&gt;
+&lt;p&gt;  자세한 그림은 Vue 공식사이트에서 제공해주는 다음 사진으로 대체한다.&lt;/p&gt;
+&lt;p&gt;  &lt;img src=&quot;https://kr.vuejs.org/images/lifecycle.png&quot; alt=&quot;vue_component_life_cycle&quot;&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;Vue&quot; vs &quot;React&quot;, &quot;Angular&quot; (미완)&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  자세한 내용은 이 &lt;a href=&quot;https://medium.com/sjk5766/angular-vs-react-vs-vue-72046f6748b8&quot; title=&quot;Vue_vs_React_vs_Angular&quot;&gt;사이트&lt;/a&gt;로 대체하겠다.. 잘 모르는 내용이다..  &lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;Vuex&quot;란? 써야하는 이유는?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  Vuex란 &lt;strong&gt;상태관리&lt;/strong&gt; 관련 라이브러리이다. 우선, vuex를 이해하기 위해서는 &lt;strong&gt;상태관리&lt;/strong&gt;에 대해서 먼저 알 필요가 있다.  &lt;/p&gt;
+&lt;p&gt;  &lt;a href=&quot;https://joshua1988.github.io/web-development/vuejs/vuex-start/&quot; title=&quot;Vuex설명&quot;&gt;다음&lt;/a&gt;의 사이트에서는 상태관리를 이렇게 설명한다.  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;상태 관리란 여러 컴포넌트 간의 데이터 전달과 이벤트 통신을 한곳에서 관리하는 패턴을 의미합니다. 뷰와 성격이 비슷한 프레임워크인 리액트(React)에서는 Redux, Mobx와 같은 상태 관리 라이브러리를 사용하고 있고 뷰에서는 Vuex라는 상태 관리 라이브러리를 사용합니다.  &lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  그렇다면, 상태관리로 해결할 수 있는 일이 무엇이길래 라이브러리까지 만들었을까? 위의 사이트에선, 다음과 같이 설명한다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;상태 관리는 중대형 규모의 웹 애플리케이션에서 컴포넌트 간에 데이터를 더 효율적으로 전달할 수 있습니다. 일반적으로 앱의 규모가 커지면서 생기는 문제점들은 다음과 같습니다.  &lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;뷰의 컴포넌트 통신 방식인 props, event emit 때문에 중간에 거쳐할 컴포넌트가 많아지거나, 이를 피하기 위해 Event Bus를 사용하여 컴포넌트 간 데이터 흐름을 파악하기 어려운 것&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  이러한 문제점을 해결하기 위해 모든 데이터 통신을 한 곳에서 중앙 집중식으로 관리하는 것이 &lt;strong&gt;상태 관리&lt;/strong&gt;라고한다.&lt;/p&gt;
+&lt;p&gt;  결론적으로 이런 상태관리를 편하게, 그리고 효율적으로 한다는 점에서 Vuex를 쓰게 된다는 것이다.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;h1 id=&quot;4-css-질문&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-css-%EC%A7%88%EB%AC%B8&quot; aria-label=&quot;4 css 질문 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. &lt;em&gt;CSS&lt;/em&gt; 질문&lt;/h1&gt;
+&lt;details&gt;
+&lt;summary&gt;CSS &quot;position&quot; 속성에서 &quot;relative&quot; 와 &quot;absolute&quot; 의 차이점은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;position&lt;/code&gt;속성은 CSS에서 레이아웃을 배치할때 사용하는 속성이다.&lt;/p&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;position&lt;/code&gt;속성은 &lt;code class=&quot;language-text&quot;&gt;top&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;right&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;bottom&lt;/code&gt; 그리고 &lt;code class=&quot;language-text&quot;&gt;left&lt;/code&gt;의 값으로 위치를 조정할 수 있으며, 상속되는 값이 아니다.&lt;/p&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;position&lt;/code&gt;속성에는 4가지의 속성이 존재하는데 &lt;code class=&quot;language-text&quot;&gt;static&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;relative&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;absolute&lt;/code&gt; 그리고 &lt;code class=&quot;language-text&quot;&gt;fixed&lt;/code&gt; 속성이 존재한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  1. static: &amp;quot;default&amp;quot;속성이며, 별다른 위치를 지정하지 않을때 사용한다.
+
+  2. relative: 위치계산을 할 때, 객체가 &amp;quot;static&amp;quot;일때의 위치를 기준으로 상하좌우 이동시킬 수 있다.
+
+  3. absolute: 위치계산을 할 때, 객체의 상위요소(static 속성을 갖고있는 객체는 제외)를 기준으로 상하좌우로 이동할 수 있다. 객체의 상위요소가 없다면, 기준은 html 요소를 기준으로 잡는다.
+
+  4. fixed: 현재 브라우저의 화면에 대한 위치를 가지며, 화면이 이동함에 따라 변하는 위치가 아닌 고정된 위치값을 가진다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  비슷한 속성으로는 &lt;a href=&quot;https://webclub.tistory.com/617&quot; title=&quot;Explain of float property&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;float&lt;/code&gt;&lt;/a&gt;가 존재하는데, 비슷한 목적을 가지고 있지만 사용법이 다르니 모두 알고 넘어가자.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;display&quot; 속성에서 &quot;inline&quot;, &quot;inline-block&quot;, &quot;block&quot; 의 차이점은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;block&lt;/code&gt;속성은 일반적인 &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;div&lt;/code&gt;&lt;/strong&gt; 태그의 속성과 비슷하다. &lt;code class=&quot;language-text&quot;&gt;block&lt;/code&gt;속성을 가진 객체는 &lt;code class=&quot;language-text&quot;&gt;height&lt;/code&gt;만큼의 한 줄을 차지하게 되고, 다음 태그는 다음 줄로 넘어간다.&lt;/p&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;inline&lt;/code&gt;속성은 일반적인 &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;span&lt;/code&gt;&lt;/strong&gt; 태그의 속성과 비슷하다. &lt;code class=&quot;language-text&quot;&gt;inline&lt;/code&gt;속성을 가진 객체는 text 만큼의 크기를 점유하며, &lt;code class=&quot;language-text&quot;&gt;width&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;height&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;margin&lt;/code&gt; 그리고 &lt;code class=&quot;language-text&quot;&gt;line-height&lt;/code&gt;등의 속성을 사용할 수 없다.&lt;/p&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;inline-block&lt;/code&gt;속성은 위의 두 가지 속성인, &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;block&lt;/code&gt;&lt;/strong&gt;과 &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;inline&lt;/code&gt;&lt;/strong&gt;속성을 두 가지 혼합한 속성이라고 생각하면 편하다. &lt;code class=&quot;language-text&quot;&gt;inline&lt;/code&gt; 속성과 비슷하게 한 줄이지만 &lt;code class=&quot;language-text&quot;&gt;block&lt;/code&gt; 형태를 유지하고 있고 &lt;code class=&quot;language-text&quot;&gt;width&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;height&lt;/code&gt; 그리고 &lt;code class=&quot;language-text&quot;&gt;line-height&lt;/code&gt; 등 &lt;code class=&quot;language-text&quot;&gt;inline&lt;/code&gt; 속성에서 컨트롤 할 수 없었던 속성들을 컨트롤 할 수 있게 된다.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;&quot;transform&quot; 속성에서 &quot;translate&quot; 로 엘리먼트의 위치를 변경하는 것과 &quot;left&quot;, &quot;right&quot;, &quot;bottom&quot;, &quot;top&quot; 으로 위치를 변경하는 것의 차이점은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  관련 지식을 찾다가 &lt;a href=&quot;https://bbatta38.github.io/css/2016/04/29/css3-transition-transform-%EB%B9%84%EA%B5%90/,&quot; title=&quot;관련지식설명&quot;&gt;다음&lt;/a&gt;과 같은 사이트에서 이러한 문장을 보았다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;퍼포먼스의 차이는 크롬 개발자 도구를 사용하여 쉽게 알아볼 수 있었다.
+
+먼저 left를 이용하여 모션을 구현했을 때의 Timeline 모습이다.
+
+총 5.4초의 시간동안 모션이 이루어졌고 Rendering 시간은 247.9 ms, Painting 시간은 292.6 ms 걸렸다.
+
+두번째 transform:translate를 이용하여 모션을 구현했을 때의 Timeline 모습이다.
+
+총 5.6초의 시간동안 모션이 이루어졌고 Rendering 시간은 18.6 ms, Painting 시간은 5.1 ms 걸렸다.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  숫자만 대충 봐도 비슷한 시간에 한 쪽은, rendering과 painting에 소요하는 시간이 상당하지만 다른 하나는 그렇지 않다.  &lt;/p&gt;
+&lt;p&gt;  왜 이러한 차이를 보여줄까? 우리는 이를 알기 위해서 &lt;strong&gt;브라우저의 동작원리&lt;/strong&gt;에 대해서 알 필요가 있다. &lt;/p&gt;
+&lt;p&gt;  브라우저의 동작원리는 브라우저마다 차이가 있지만, 대강 다음과 같다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;1. 불러오기 : 리소스 파일 로딩
+2. 파싱 : DOM 트리를 생성 
+3. 렌더링 트리 생성 : 화면에 DOM을 표시하기 위해서는, 위치 및 크기 정보같은 정보를 저장하기 위한 별도의 트리(렌더링 트리)가 필요한데, 이 트리를 생성
+4. CSS 스타일 결정 : 특정 태그에 어떠한 스타일이 적용됨을 확인
+5. 레이아웃 : 각 객체가 위치와 크기값을 가지게 되는 과정
+6. 페인팅 : 렌더링 트리를 탐색하며 특정 메모리 공간에 RGB값을 주입&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  &lt;code class=&quot;language-text&quot;&gt;left&lt;/code&gt;는 이 과정 속에서 element가 이동하는 동안에 렌더링 트리를 재생성하고, CSS 스타일을 재결정하고, 레이아웃을 재설정하며 그리고 페인팅을 다시하게 된다. &lt;/p&gt;
+&lt;p&gt;  반면 &lt;code class=&quot;language-text&quot;&gt;translate&lt;/code&gt;는 element가 이동하는 동안에 위와 같은 과정이 덜 일어나는것을 볼 수가 있다.&lt;/p&gt;
+&lt;p&gt;  결론적으로 &lt;strong&gt;performance&lt;/strong&gt; 측면에서 &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;translate&lt;/code&gt;&lt;/strong&gt;을 통한 이동이 &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;left&lt;/code&gt;&lt;/strong&gt;을 통한 이동보다 &lt;strong&gt;optimal&lt;/strong&gt;하다는 점이 차이점이다.&lt;/p&gt;
+&lt;p&gt;  관련된 내용은 &lt;a href=&quot;https://www.paulirish.com/2012/why-moving-elements-with-translate-is-better-than-posabs-topleft/&quot; title=&quot;설명&quot;&gt;다음&lt;/a&gt;에서도 볼 수 있다.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;h1 id=&quot;5-웹-개발-질문&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#5-%EC%9B%B9-%EA%B0%9C%EB%B0%9C-%EC%A7%88%EB%AC%B8&quot; aria-label=&quot;5 웹 개발 질문 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;5. &lt;em&gt;웹 개발&lt;/em&gt; 질문&lt;/h1&gt;
+&lt;details&gt;
+&lt;summary&gt;CORS란? 그리고 CORS를 해결할 수 있는 방법은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;  
+  CORS는 Cross-Origin Resource Sharing의 약자로, **포트 또는 도메인**이 다른 서버에 리소스를 요청할 수 있게하는 구조를 의미한다.  
+&lt;p&gt;  기본적으로 HTTP 요청은 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;img&amp;gt;&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;&amp;lt;link&amp;gt;&lt;/code&gt; 그리고 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;script&amp;gt;&lt;/code&gt; 태그를 이용하여 다른 서버의 리소스를 요청하는 방법은 허용된다.&lt;/p&gt;
+&lt;p&gt;  그러나 &lt;code class=&quot;language-text&quot;&gt;&amp;lt;script&amp;gt;&amp;lt;/script&amp;gt;&lt;/code&gt;의 태그 내부부분에서 외부 서버로 요청되는 CORS는 &lt;strong&gt;Same Origin Policy&lt;/strong&gt;라는 보안상의 이유로 요청을 금지한다. &lt;/p&gt;
+&lt;p&gt;  다음은 예시(&lt;a href=&quot;https://velog.io/@jmkim87/%EC%A7%80%EA%B8%8B%EC%A7%80%EA%B8%8B%ED%95%9C-CORS-%ED%8C%8C%ED%97%A4%EC%B3%90%EB%B3%B4%EC%9E%90&quot; title=&quot;CORS 설명&quot;&gt;출처&lt;/a&gt;)이다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;e.g) 사이트 도메인이 www.a.com 일 경우...  
+
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = () =&amp;gt; {
+        if (xhr.readyState === xhr.DONE) {
+            if (xhr.status === 200 || xhr.status === 201) {
+                console.log(xhr.responseText);
+            } else {
+                console.error(xhr.responseText);
+            }
+        }
+    };
+    xhr(&amp;#39;get&amp;#39;, &amp;#39;https://www.b.com/api/v1/user/13&amp;#39;);
+    xhr.send();&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  위의에서 우리는 사이트 도메인이 &lt;strong&gt;www.a.com&lt;/strong&gt;인 곳에서, 도메인이 &lt;strong&gt;www.b.com&lt;/strong&gt;인 곳으로 HTTP 요청함을 볼 수 있다.  &lt;/p&gt;
+&lt;p&gt;  이렇게 요청을 한다면, 프로토콜(http/https), 포트넘버, 도메인이 다른 서버로 HTTP 요청을 했으므로 CORS 관련 에러가 나오게 된다.  &lt;/p&gt;
+&lt;p&gt;  이러한 CORS 관련 에러는 다음과 같이 여러 해결 방법들이 존재한다.  &lt;/p&gt;
+&lt;h3 id=&quot;1-동일한-도메인과-포트넘버-사용하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-%EB%8F%99%EC%9D%BC%ED%95%9C-%EB%8F%84%EB%A9%94%EC%9D%B8%EA%B3%BC-%ED%8F%AC%ED%8A%B8%EB%84%98%EB%B2%84-%EC%82%AC%EC%9A%A9%ED%95%98%EA%B8%B0&quot; aria-label=&quot;1 동일한 도메인과 포트넘버 사용하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. 동일한 도메인과 포트넘버 사용하기&lt;/h3&gt;
+&lt;p&gt;  &lt;del&gt;이론상 가장 간단한 방법이다..!!&lt;/del&gt;&lt;/p&gt;
+&lt;p&gt;  실생활에서 서버와 클라이언트의 도메인과 포트가 동일할 경우가 없을테니 패스..  &lt;/p&gt;
+&lt;h3 id=&quot;2-웹-브라우저단에서-해결하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-%EC%9B%B9-%EB%B8%8C%EB%9D%BC%EC%9A%B0%EC%A0%80%EB%8B%A8%EC%97%90%EC%84%9C-%ED%95%B4%EA%B2%B0%ED%95%98%EA%B8%B0&quot; aria-label=&quot;2 웹 브라우저단에서 해결하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. 웹 브라우저단에서 해결하기&lt;/h3&gt;
+&lt;p&gt;  디버깅 목적으로 웹 브라우저에서 CORS를 해결하는 방법이 있다.  &lt;/p&gt;
+&lt;p&gt;  어디까지나 클라이언트의 “웹 브라우저”에서 해결하는 방법이기 때문에, 실제로 운영되는 서비스나 그런곳에서 사용되기는 어렵다. 개인이 설정을 해줘야하는 작업이기 때문에, 근본적인 해결방법이 될 수 없다. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;1. 웹 브라우저의 커맨드를 통한 CORS 해결
+2. 웹 브라우저의 플러그인을 통한 CORS 해결
+3. JSONP방식을 통한 CORS 해결&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  해결방법에 대한 &lt;a href=&quot;https://enterkey.tistory.com/409&quot; title=&quot;CORS 해결방법 설명&quot;&gt;자세한 내용&lt;/a&gt;은 다음을 참고하면 좋겠다.&lt;/p&gt;
+&lt;h3 id=&quot;3-access-control-allow-origin-response-header-추가&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-access-control-allow-origin-response-header-%EC%B6%94%EA%B0%80&quot; aria-label=&quot;3 access control allow origin response header 추가 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. Access-Control-Allow-Origin response header 추가&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;app.get(&amp;#39;/data&amp;#39;, (req, res) =&amp;gt; {
+  res.header(&amp;quot;Access-Control-Allow-Origin&amp;quot;, &amp;quot;*&amp;quot;);
+  res.send(data);
+})&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  다음과 같이 REST api의 header부분에 &lt;strong&gt;Access-Contorl-Allow-Origin&lt;/strong&gt; 부분을 모든 클라이언트의 요청에 대해 추가해주면 된다. &lt;/p&gt;
+&lt;p&gt;  단점이 있다면, 모든 REST api에 header를 넣어야 한다는 단점이 있다.  &lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;RESTful이란?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  RESTful이라는 의미는 &lt;strong&gt;REpresentational State Transfer&lt;/strong&gt;의 약자인 REST라는 소프트웨어 프로그램 개발의 아키텍처의 비공식적 가이드(형용사형이므로)라고 생각하면 된다.&lt;/p&gt;
+&lt;p&gt;  이렇게 이해할려면 어려우므로, RESTful을 이해하려면 그것의 근간이 되는 REST에 대해서 알아야만 한다.&lt;/p&gt;
+&lt;p&gt;  학부시절에 REST아키텍쳐를 말로만 들어봐서 의미를 잘 몰라 한국어로 번역해봤는데, &lt;strong&gt;대표적인 상태 전달&lt;/strong&gt;이라고 한다. 누가 이렇게 이해할까..??&lt;/p&gt;
+&lt;p&gt;  의미를 찾아보던 중, &lt;a href=&quot;https://www.a-mean-blog.com/ko/blog/%ED%86%A0%EB%A7%89%EA%B8%80/_/REST%EC%99%80-RESTful-API&quot; title=&quot;REST에 대한 설명&quot;&gt;다음과 같은 블로그&lt;/a&gt;에서는 REST에 대해서 이렇게 설명했다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;… 저는 개인적으로 이 단어를 변형해서 ”&lt;strong&gt;자원(resource)&lt;/strong&gt;의 &lt;strong&gt;대표(representation)&lt;/strong&gt;에 의한 상태 전달” 이라고 설명하려 합니다 …&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  그렇다면 &lt;strong&gt;자원&lt;/strong&gt;이라는 것은 무엇일까? 해당 블로그에서 설명하는 &lt;strong&gt;자원&lt;/strong&gt;이라는 정의는 다음과 같다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;여기서 ‘자원’이란 뜻은 넓은 의미로 해당 소프트웨어가 관리하는 모든 것이 될 수 있습니다. 문서가 될 수도 있고 그림이 될 수도 있고 데이터가 될 수도 있고 심지어 해당 소프트웨어 자체가 될 수도 있습니다. 예를 들어 DB에 학생 명부가 저장되어 있다고 한다면 이 학생들의 정보가 자원이 됩니다. 그리고 ‘자원의 대표’의 의미는 그 자원을 대표하기 위한 이름을 뜻합니다. 학생데이터를 대표하기 위한 이름은 무엇이 좋을까요? 물론 학생(students:복수형을 사용합니다)입니다. 학생 전체 명부가 아니라 명부상의 한 학생에 대한 자원을 얻고자 한다면 대표이름과 한 학생을 특정할 수 있는 값(id 등)이 사용됩니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  그렇다면 &lt;strong&gt;상태전달&lt;/strong&gt;이란 의미는 무엇일까? 해당 블로그에서 설명하는 &lt;strong&gt;상태전달&lt;/strong&gt;은 다음과 같다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;데이터가 요청되어지는 시점에서 자원의 상태(정보)를 전달하는 것을 뜻합니다. 데이터를 요청하는 시점에 따라 데이터가 바뀔 수도 있기 때문에 ‘상태’라는 표현을 쓴 것이라 추측해 봅니다. 프로그램이 학생 명부 전체 리스트를 요청받으면 요청받은 시점의 ‘상태’ 즉 데이터를 전달하게 됩니다. 또한 새로운 학생 명부 ‘상태’를 프로그램에 전달하여 해당 자원을 수정할 수도 있습니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  고로 자원을 이름으로 구분하여, 해당 자원의 상태를 주고 받는 모든 아키텍쳐들은 REST 아키텍쳐인 것이다.&lt;/p&gt;
+&lt;p&gt;  여기에 내가 조금 들어본 지식들을 조합해서 생각해보면, REST라는 것에 대한 내 생각은 다음과 같다.&lt;/p&gt;
+&lt;p&gt;  &lt;strong&gt;자원(Resources)을 대표하는 이름(URL)을 이용하여, 자원을 선택하고 그 자원의 상태를 다루는(HTTP Method) 아키텍쳐&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;  또한 이런 REST를 정의하기 위한 조건들이 있는데, 그 조건들은 다음과 같다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  * 클라이언트-서버 구조
+  * 무상태(Stateless)
+  * 캐시 처리 가능(Cacheable)
+  * 계층화(Layered System)
+  * Code on demand (optional)
+  * 인터페이스 일관성&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  참고로, RESTful에 정답은 없다. 그저 REST의 원리를 따르는 시스템들을 표현하기 위해서 사용되는 단어라고 생각하면 된다.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;RESTful의 메소드 종류는?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  1. GET
+  2. POST
+  3. PUT
+  4. DELETE&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  정도가 있겠다. 상기의 4가지 HTTP method들을 통하여 CRUD하되, 최대한 REST의 방향을 따라가야만 한다.  &lt;/p&gt;
+&lt;p&gt;  RESTful에 대해서는 나중에 따로 포스트를 올릴 거지만(&lt;del&gt;올려야 하지만&lt;/del&gt;), 좋은 REST API를 만들기 위해서는 critical한 condition들을 만족해야만 한다. 예를들어 목적에 부합하게 method를 사용해야한다던지, URL의 표현 방식에 대해서도 설명하는 글들이 많다.  &lt;/p&gt;
+&lt;p&gt;  자세한 내용은 &lt;a href=&quot;https://meetup.toast.com/posts/92&quot; title=&quot;REST API의 조건에 대한 설명&quot;&gt;다음&lt;/a&gt;을 참고해보자. 아직 나에게는 많이 어려운 내용같다…  &lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;웹에서 HTTP 통신을 할 때의 과정은?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  다음과 같은 순서를 따른다.  &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;  1. URL 주소 입력에 따른 DNS 서버의 IP 주소 반환 및 클라이언트의 서버 연결 요청
+  2. 클라이언트-서버 연결 시도  
+      - 연결 방식은 TCP 연결방식, 3-hand shaking을 통하여 연결의 신뢰성보장
+  3. 연결이 성공되면, 클라이언트의 HTTP Request가 서버에게 전달
+  4. 서버의 HTTP Response가 클라이언트에게 전달
+  5. 클라이언트-서버의 TCP 연결 헤제&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;  해당 내용은 &lt;a href=&quot;https://jess-m.tistory.com/17&quot; title=&quot;HTTP 통신 과정 설명&quot;&gt;다음&lt;/a&gt;을 참고했다.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+&lt;details&gt;
+&lt;summary&gt;크로스 브라우징이란?&lt;/summary&gt;
+&lt;div markdown=&quot;1&quot;&gt;
+  &lt;br /&gt;
+&lt;p&gt;  회사에 입사하고 1달 즈음 되었을 때, 처음으로 크로스 브라우징에 관한 이슈를 사수분께 들었었다.&lt;/p&gt;
+&lt;p&gt;  당시의 나는 크로스 브라우징이라는 이슈를 단순히 &lt;strong&gt;모든 웹 브라우저에서 같은 화면 보이게 하기&lt;/strong&gt; 정도의 이슈로 생각했었는데, 이번에 이 글을 쓰게 되면서 그런 생각을 고치게 되었다.&lt;/p&gt;
+&lt;p&gt;  이 글을 쓰기 위해서 참고한 사이트는 &lt;a href=&quot;https://mulder21c.github.io/2019/01/30/what-is-cross-browsing/&quot; title=&quot;크로스 브라우징에 대한 설명&quot;&gt;다음&lt;/a&gt;과 같고, 해당 사이트에서는 다음과 같은 내용을 찾을 수 있다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;크로스 브라우징은 동일성을 의미하지 않는다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  단순히 크로스 브라우징이 여러 개의 브라우저에서 같게 보이게 하는 기술로 착각했던 나를 비롯한 수많은 초보 개발자들은 이 글을 읽고 다음과 의문이 들었을 것이다.&lt;/p&gt;
+&lt;p&gt;  &lt;em&gt;아니 그러면 도대체 크로스 브라우징은 뭔데?&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;  크로스 브라우징이란, 위의 사이트에서 다음과 같이 설명을 잘해준다.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;크로스 브라우징이란 적어도 표준 웹 기술을 채용하여 다른 기종 혹은 플랫폼에 따라 달리 구현되는 기술을 비슷하게 만듦과 동시에 어느 한쪽에 최적화되어 치우치지 않도록 공통 요소를 사용하여 웹 페이지를 제작하는 기법을 말하는 것이다. 또한, 지원할 수 없는 다른 웹 브라우저를 위한 장치를 구현하여 모든 웹 브라우저 사용자가 방문했을 때 정보로서의 소외감을 느끼지 않도록 하는 방법론적 가이드를 의미하는 것이다.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;  한 마디로, &lt;strong&gt;동일성&lt;/strong&gt;이 아닌 &lt;strong&gt;동등성&lt;/strong&gt;에 대해서 논하고 있다는 것이다. 어느 웹 브라우저에도 치우치지 않는, 공통요소를 최대한 많이 사용하여 웹 페이지를 제작하는 기법이 바로 &lt;strong&gt;크로스 브라우징&lt;/strong&gt;이라는 것이다.&lt;/p&gt;
+&lt;p&gt;  모든 브라우저에서 같은 사용자 경험을 주지 않아도 괜찮다. 왜냐하면, 크로스 브라우징은 그런 것이 아닌, 특정 브라우저에만 의존되는 기술들을 사용하지 않고 최대한의 호환성을 제공하는 것에 관심이 있기 때문이다.&lt;/p&gt;
+&lt;p&gt;  크로스 브라우징에 대하여 나처럼 정보를 잘못 알고 있던 분들이 다시 알아갔으면 좋겠다 :)&lt;/p&gt;
+&lt;/div&gt;
+&lt;/details&gt;
+  </content:encoded></item><item><title><![CDATA[Git issue가 무엇일까?]]></title><description><![CDATA[인터넷에서 Git issue에 대해 검색하면 나오는 사진. issue를 잘 사용하는 모습이다. 저번 포스트에서는 Git과 Github…]]></description><link>https://samsara-ku.dev/common_sense/importance-of-git-issue/</link><guid isPermaLink="false">https://samsara-ku.dev/common_sense/importance-of-git-issue/</guid><pubDate>Wed, 22 Apr 2020 16:24:13 GMT</pubDate><content:encoded>&lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
     &gt;
@@ -608,27 +1253,25 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;인터넷에서 Git issue에 대해 검색하면 나오는 사진. issue를 잘 사용하는 모습이다. &lt;/p&gt;
+&lt;p&gt;인터넷에서 Git issue에 대해 검색하면 나오는 사진. issue를 잘 사용하는 모습이다.&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;저번 포스트에서는 Git과 Github의 차이를 알아보았다.     &lt;/p&gt;
+&lt;p&gt;저번 포스트에서는 Git과 Github의 차이를 알아보았다.    &lt;/p&gt;
 &lt;p&gt;이번 포스트에서는 우리는 잘 사용하지 않지만, 회사같은 프로젝트 중심의 그룹에서는 자주 사용하는 Git issue에 대한 내용을 다루겠다.&lt;/p&gt;
-&lt;p&gt;물론 학교나 혼자하는 소규모 단계의 프로젝트에서는 잘 사용하지 않지만, 조금만 프로젝트의 규모가 커진다면 사용하는 편이 오히려 편한 편이다. 개발의 흐름도 볼 수 있고. &lt;/p&gt;
-&lt;hr&gt;
+&lt;p&gt;물론 학교나 혼자하는 소규모 단계의 프로젝트에서는 잘 사용하지 않지만, 조금만 프로젝트의 규모가 커진다면 사용하는 편이 오히려 편한 편이다. 개발의 흐름도 볼 수 있고.&lt;/p&gt;
 &lt;h1 id=&quot;1-git-issue가-뭔데&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-git-issue%EA%B0%80-%EB%AD%94%EB%8D%B0&quot; aria-label=&quot;1 git issue가 뭔데 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Git issue가 뭔데?&lt;/h1&gt;
-&lt;p&gt;issue가 무엇일까? 사실 우리가 다루는 모든 것들이 issue이다. 디버깅, 특정 기능의 개발, 풀 리퀘스트, 도큐먼트 쓰기 등등 모든 것들이 issue이다.    &lt;/p&gt;
-&lt;p&gt;그렇다면 우리가 왜 issue라는 것을 알아야할까? Issue가 필요한 예시를 하나 들어보자.  &lt;/p&gt;
+&lt;p&gt;issue가 무엇일까? 사실 우리가 다루는 모든 것들이 issue이다. 디버깅, 특정 기능의 개발, 풀 리퀘스트, 도큐먼트 쓰기 등등 모든 것들이 issue이다.&lt;/p&gt;
+&lt;p&gt;그렇다면 우리가 왜 issue라는 것을 알아야할까? Issue가 필요한 예시를 하나 들어보자.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;쇼핑몰 웹사이트 외주를 받아서 개발하는 도중에, fun&lt;em&gt;A기능이 필요해서 branch에 fun&lt;/em&gt;A를 만들어서 작업하려고 했다. 그런데 같이 협업하는 B라는 사람이 먼저 fA라는 branch을 만들어서 동일한 기능을 개발하고 있는걸 나중에야 알아버렸다..&lt;br&gt;
-다음에는 branch를 잘 봐야지 라는 생각을 가지고 다음 작업으로 fun&lt;em&gt;B기능이 필요해서 branch에 fun&lt;/em&gt;B를 만드려했더니, 어라 C라는 사람이 또 먼저 하고 있었네? 아니 일을 하고있으면 하고있다고 말해야하는거 아니야..?? &lt;/p&gt;
+&lt;p&gt;쇼핑몰 웹사이트 외주를 받아서 개발하는 도중에, fun&lt;em&gt;A기능이 필요해서 branch에 fun&lt;/em&gt;A를 만들어서 작업하려고 했다. 그런데 같이 협업하는 B라는 사람이 먼저 fA라는 branch을 만들어서 동일한 기능을 개발하고 있는걸 나중에야 알아버렸다..
+다음에는 branch를 잘 봐야지 라는 생각을 가지고 다음 작업으로 fun&lt;em&gt;B기능이 필요해서 branch에 fun&lt;/em&gt;B를 만드려했더니, 어라 C라는 사람이 또 먼저 하고 있었네? 아니 일을 하고있으면 하고있다고 말해야하는거 아니야..??&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;이렇게 여러 사람이 하나의 결과물을 가지고 공동으로 코딩하고 있는 경우에 다음과 같은 상황이 빈번히 일어나곤 한다. 누가 어떤 문제를 해결하고 있고, 누가 어떤 기능을 개발하고.. 여러 상황이 꼬여서 복잡한 모습이 될 것이다.    &lt;/p&gt;
-&lt;p&gt;물론 잦은 커뮤니케이션으로 이러한 문제를 해결할 수 있지만, 우리가 커뮤니케이션을 못하는 상황이 나올 수 있기도 하고 커뮤니케이션을 까먹기도 하니 근본적인 해결방법은 아니라고 생각한다.   &lt;/p&gt;
-&lt;p&gt;이럴 때 사용하는 것이 issue이다. 내가 어떠한 상황, 문제, 또는 플랜에 대해서 개발을 할 예정이라는 것을 알려주는 &lt;strong&gt;이정표&lt;/strong&gt;인 것이다.    &lt;/p&gt;
-&lt;p&gt;우리는 이런 issue를 잘 발급하여, 그에 맞는 branch를 만들어서 그 issue를 해결하고 다시 merge시키는 일련의 작업들을 개발 단계에서 행한다.     &lt;/p&gt;
-&lt;hr&gt;
+&lt;p&gt;이렇게 여러 사람이 하나의 결과물을 가지고 공동으로 코딩하고 있는 경우에 다음과 같은 상황이 빈번히 일어나곤 한다. 누가 어떤 문제를 해결하고 있고, 누가 어떤 기능을 개발하고.. 여러 상황이 꼬여서 복잡한 모습이 될 것이다.&lt;/p&gt;
+&lt;p&gt;물론 잦은 커뮤니케이션으로 이러한 문제를 해결할 수 있지만, 우리가 커뮤니케이션을 못하는 상황이 나올 수 있기도 하고 커뮤니케이션을 까먹기도 하니 근본적인 해결방법은 아니라고 생각한다.&lt;/p&gt;
+&lt;p&gt;이럴 때 사용하는 것이 issue이다. 내가 어떠한 상황, 문제, 또는 플랜에 대해서 개발을 할 예정이라는 것을 알려주는 &lt;strong&gt;이정표&lt;/strong&gt;인 것이다.&lt;/p&gt;
+&lt;p&gt;우리는 이런 issue를 잘 발급하여, 그에 맞는 branch를 만들어서 그 issue를 해결하고 다시 merge시키는 일련의 작업들을 개발 단계에서 행한다.&lt;/p&gt;
 &lt;h1 id=&quot;2-git-issue의-사용법은&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-git-issue%EC%9D%98-%EC%82%AC%EC%9A%A9%EB%B2%95%EC%9D%80&quot; aria-label=&quot;2 git issue의 사용법은 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Git issue의 사용법은?&lt;/h1&gt;
 &lt;h3 id=&quot;a-git-issue-탭-들어가기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#a-git-issue-%ED%83%AD-%EB%93%A4%EC%96%B4%EA%B0%80%EA%B8%B0&quot; aria-label=&quot;a git issue 탭 들어가기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;A. Git issue 탭 들어가기&lt;/h3&gt;
-&lt;p&gt;Github(또는 Gitlab)의 issue탭은 우선 우리가 생성한 repository를 들어가는 것에서 시작한다. 해당 repo를 들어가면 위의 탭 부분에서 issue 탭을 볼 수 있고, 그 탭을 누르면,  &lt;/p&gt;
+&lt;p&gt;Github(또는 Gitlab)의 issue탭은 우선 우리가 생성한 repository를 들어가는 것에서 시작한다. 해당 repo를 들어가면 위의 탭 부분에서 issue 탭을 볼 수 있고, 그 탭을 누르면,&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
@@ -653,7 +1296,7 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;다음과 같은 화면이 보일 것이다.&lt;/p&gt;
-&lt;p&gt;처음 Github의 issue탭에 들어가면 다음과 같은 백지상태가 보일것이다. 이제 이 백지상태의 화면에 issue를 생성해보자.   &lt;/p&gt;
+&lt;p&gt;처음 Github의 issue탭에 들어가면 다음과 같은 백지상태가 보일것이다. 이제 이 백지상태의 화면에 issue를 생성해보자.&lt;/p&gt;
 &lt;p&gt;위 이미지에서 볼 수 있는, 초록색 &lt;strong&gt;New issue&lt;/strong&gt; 버튼을 눌러보자.
 &lt;/p&gt;
 &lt;h3 id=&quot;b-git-issue-발행하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#b-git-issue-%EB%B0%9C%ED%96%89%ED%95%98%EA%B8%B0&quot; aria-label=&quot;b git issue 발행하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;B. Git issue 발행하기&lt;/h3&gt;
@@ -680,9 +1323,9 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;New issue 버튼을 누르면 위와 같은 화면으로 넘어간다. 이 화면에서 우리는 issue에 대한 상세정보를 작성해야한다.   &lt;/p&gt;
-&lt;p&gt;이미지에서 볼 수 있듯이, “Git issue에 관한 post에 대한 내용”이 적혀있는 부분이 issue의 제목부분이다.    &lt;/p&gt;
-&lt;p&gt;아래에 크게 글을 쓸 수 있게 되어있는, “말 그대로~~” 글자가 적혀있는 곳은 issue에 대한 상세정보를 적는 부분이다.     &lt;/p&gt;
+&lt;p&gt;New issue 버튼을 누르면 위와 같은 화면으로 넘어간다. 이 화면에서 우리는 issue에 대한 상세정보를 작성해야한다.&lt;/p&gt;
+&lt;p&gt;이미지에서 볼 수 있듯이, “Git issue에 관한 post에 대한 내용”이 적혀있는 부분이 issue의 제목부분이다.&lt;/p&gt;
+&lt;p&gt;아래에 크게 글을 쓸 수 있게 되어있는, “말 그대로~~” 글자가 적혀있는 곳은 issue에 대한 상세정보를 적는 부분이다.&lt;/p&gt;
 &lt;p&gt;이렇게 issue를 생성하면 다음과 같이 생성된다!&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -707,11 +1350,11 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;하지만 이렇게 생성된 issue를 관리하는건 매우 힘들다. 아무리 제목을 잘 지어둔다고 한들, 수많은 issue들 사이에서 내가 원하는 성격의 issue를 찾기란 정말 어려울것이다. 그때 사용하는 특성이 label이다. &lt;/p&gt;
+&lt;p&gt;하지만 이렇게 생성된 issue를 관리하는건 매우 힘들다. 아무리 제목을 잘 지어둔다고 한들, 수많은 issue들 사이에서 내가 원하는 성격의 issue를 찾기란 정말 어려울것이다. 그때 사용하는 특성이 label이다.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;label: 이 issue의 성격이 무엇인지에 대해서 설명해준다. 기본적인 Github의 labels들을 customize하여 쓸 수 있다.     &lt;/li&gt;
+&lt;li&gt;label: issue의 성격이 무엇인지에 대해서 설명해준다. 기본적인 Github의 labels들을 customize하여 쓸 수 있다.&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;이러한 label을 사용하면 filtering이 쉬워지고, 한 눈에 issue가 어디에 속해있는지 알 수 있게된다. &lt;/p&gt;
+&lt;p&gt;이러한 label을 사용하면 filtering이 쉬워지고, 한 눈에 issue가 어디에 속해있는지 알 수 있게된다.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
@@ -735,10 +1378,10 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;위의 이미지는 label의 설정 화면이다. Github에서 기본적으로 제공해주는 label들이 있으며, 위 이미지의 &lt;strong&gt;test&lt;/strong&gt;처럼 내가 직접 label을 만들어서 관리할 수 있다.     &lt;/p&gt;
-&lt;p&gt;그렇다면 해당 issue의 성격까지는 알았는데 누가 이 issue에 관련되어있는지는 어떻게 알 수 있을까? 해당 문제는 &lt;strong&gt;Assignees&lt;/strong&gt;라는 특성으로 해결할 수 있다.   &lt;/p&gt;
+&lt;p&gt;위의 이미지는 label의 설정 화면이다. Github에서 기본적으로 제공해주는 label들이 있으며, 위 이미지의 &lt;strong&gt;test&lt;/strong&gt;처럼 내가 직접 label을 만들어서 관리할 수 있다.&lt;/p&gt;
+&lt;p&gt;그렇다면 해당 issue의 성격까지는 알았는데 누가 이 issue에 관련되어있는지는 어떻게 알 수 있을까? 해당 문제는 &lt;strong&gt;Assignees&lt;/strong&gt;라는 특성으로 해결할 수 있다.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Assignees: 이 issue에 누가 관련되어 있는지에 대해서 설명해준다. 내 자신을 관련시킬수도, 타인을 관련시킬수도 있다.  &lt;/li&gt;
+&lt;li&gt;Assignees: 이 issue에 누가 관련되어 있는지에 대해서 설명해준다. 내 자신을 관련시킬수도, 타인을 관련시킬수도 있다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -763,11 +1406,11 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;위 화면은 Assignee와 label을 모두 적용한 issue의 메인화면이다. 보다시피 색깔로 highlight되어있는 label들과, 각 issue들이 누구에게 할당되어있는지에 대한 assignee때문에 한결 보기 편해졌다!  &lt;/p&gt;
-&lt;p&gt;하지만 이렇게 잘 정리해도, 비슷한 기능들을 구현하는 issue들이 존재할 수 있다! 또한 이 issue들을 찾기 위해서는, 해당 issue들의 label로는 찾을 수 없다하면 어떻게 해야할까?   &lt;/p&gt;
-&lt;p&gt;이럴 때, 사용되는 특성이 바로 &lt;strong&gt;Milestone&lt;/strong&gt;이다.    &lt;/p&gt;
+&lt;p&gt;위 화면은 Assignee와 label을 모두 적용한 issue의 메인화면이다. 보다시피 색깔로 highlight되어있는 label들과, 각 issue들이 누구에게 할당되어있는지에 대한 assignee때문에 한결 보기 편해졌다!&lt;/p&gt;
+&lt;p&gt;하지만 이렇게 잘 정리해도, 비슷한 기능들을 구현하는 issue들이 존재할 수 있다! 또한 이 issue들을 찾기 위해서는, 해당 issue들의 label로는 찾을 수 없다하면 어떻게 해야할까?&lt;/p&gt;
+&lt;p&gt;이럴 때, 사용되는 특성이 바로 &lt;strong&gt;Milestone&lt;/strong&gt;이다.&lt;/p&gt;
 &lt;ul&gt;
-&lt;li&gt;Milestone: 이 issue가 어디의 group에 속해있는지 설명해준다. Repository의 진행 상황을 표현할 때 사용한다.  &lt;/li&gt;
+&lt;li&gt;Milestone: 이 issue가 어디의 group에 속해있는지 설명해준다. Repository의 진행 상황을 표현할 때 사용한다.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -792,7 +1435,7 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;Milestone 탭을 눌러서 생성해보자. Milestone에는 제목, 기간, 설명들을 적을 수 있다. Issue들이 개발할 때 사소한 문제점들을 적어놓는 곳이라면, milestone은 그것보다 좀 더 큰 그림을 그릴 때 사용한다.  &lt;/p&gt;
+&lt;p&gt;Milestone 탭을 눌러서 생성해보자. Milestone에는 제목, 기간, 설명들을 적을 수 있다. Issue들이 개발할 때 사소한 문제점들을 적어놓는 곳이라면, milestone은 그것보다 좀 더 큰 그림을 그릴 때 사용한다.&lt;/p&gt;
 &lt;p&gt;Milestone에는 아래와 같이 issue들을 관련시킬 수 있고, 그 관련되어있는 issue들의 진행 상황(open/close)에 따라 milestone의 진행상황이 달라진다.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -817,7 +1460,7 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;만약 issue를 3개 관련시키고 그 중 하나를 close시키면 다음과 같이 milestone의 진행상황이 변한다.  &lt;/p&gt;
+&lt;p&gt;만약 issue를 3개 관련시키고 그 중 하나를 close시키면 다음과 같이 milestone의 진행상황이 변한다.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
@@ -841,7 +1484,7 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;그런데 이렇게 milestone, label, assignee를 사용하면 issue 각각의 상황은 알아볼 수 있어도, 개발의 전반적인 진행상황이 눈에 보이지 않을때가 있다.     &lt;/p&gt;
+&lt;p&gt;그런데 이렇게 milestone, label, assignee를 사용하면 issue 각각의 상황은 알아볼 수 있어도, 개발의 전반적인 진행상황이 눈에 보이지 않을때가 있다.&lt;/p&gt;
 &lt;p&gt;Project의 workflow를 보고 싶다면 어떻게 해야할까? &lt;strong&gt;Project&lt;/strong&gt;탭을 사용하면 된다. 일단 Project탭에 들어가자. 그러면 다음과 같은 화면이 당신을 반길텐데,&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -916,8 +1559,8 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         loading=&quot;lazy&quot;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
-&lt;p&gt;우리는 여기서 &lt;strong&gt;Card&lt;/strong&gt;라는 issue와 비슷한 단위 개념을 만들 수 있다. 이 card들을 생성해서 우리는 issue와 비슷한 개념으로 해야 할 일, 하고 있는 일, 한 일을 표시할 수 있다.     &lt;/p&gt;
-&lt;p&gt;물론 이 card들을 이용해서 해당 issue를 생성할 수도 있다. &lt;strong&gt;Trello&lt;/strong&gt;라는 프로그램을 사용해신 분들은 상당히 비슷하다는 것을 알 수 있을것이다.     &lt;/p&gt;
+&lt;p&gt;우리는 여기서 &lt;strong&gt;Card&lt;/strong&gt;라는 issue와 비슷한 단위 개념을 만들 수 있다. 이 card들을 생성해서 우리는 issue와 비슷한 개념으로 해야 할 일, 하고 있는 일, 한 일을 표시할 수 있다.&lt;/p&gt;
+&lt;p&gt;물론 이 card들을 이용해서 해당 issue를 생성할 수도 있다. &lt;strong&gt;Trello&lt;/strong&gt;라는 프로그램을 사용해신 분들은 상당히 비슷하다는 것을 알 수 있을것이다.&lt;/p&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
       style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 1200px; &quot;
@@ -944,64 +1587,47 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;p&gt;다음은 card들을 이용해서 간단하게 project를 꾸며보았다. 이러한 방식으로 Project탭을 이용하여 efficient한 working process를 만들 수 있다.&lt;/p&gt;
 &lt;h3 id=&quot;c-git-issue-수정하기&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#c-git-issue-%EC%88%98%EC%A0%95%ED%95%98%EA%B8%B0&quot; aria-label=&quot;c git issue 수정하기 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;C. Git issue 수정하기&lt;/h3&gt;
-&lt;p&gt;이렇게 만든 issue들은 당연히 수정을 할 수 있는데, &lt;code class=&quot;language-text&quot;&gt;@User&lt;/code&gt; 키워드를 사용해서 같은 member를 태그하거나 &lt;code class=&quot;language-text&quot;&gt;#Ref&lt;/code&gt;를 이용하여 특정 issue를 참조하여 설명을 추가할 수 있다.     &lt;/p&gt;
-&lt;p&gt;부족한 설명들은, 팀원과의 협업에 저해가 되는 요소이니 꼭 충분한 설명으로 팀원들의 이해를 도와주자. :)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git과 Github의 차이]]></title><description><![CDATA[😢 해당 포스트는 마이그레이션중인 포스트에요! 추후 업데이트 필요! alt 나를 비롯한 많은 초보 개발자부터 경력이 많은 개발자까지, 개발자에게 있어서 Git과 Github는 필수적인 존재이다.   그러나 나를 포함한 많은 초보 개발자분들은, Git…]]></description><link>https://samsara-ku.dev/common_sense/what-is-difference-between-git-and-github/</link><guid isPermaLink="false">https://samsara-ku.dev/common_sense/what-is-difference-between-git-and-github/</guid><pubDate>Wed, 15 Apr 2020 16:23:13 GMT</pubDate><content:encoded>&lt;h3 id=&quot;-해당-포스트는-마이그레이션중인-포스트에요-추후-업데이트-필요&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%ED%95%B4%EB%8B%B9-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%8A%94-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98%EC%A4%91%EC%9D%B8-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EC%97%90%EC%9A%94-%EC%B6%94%ED%9B%84-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%ED%95%84%EC%9A%94&quot; aria-label=&quot; 해당 포스트는 마이그레이션중인 포스트에요 추후 업데이트 필요 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;😢 해당 포스트는 마이그레이션중인 포스트에요! 추후 업데이트 필요!&lt;/h3&gt;
-&lt;br /&gt;
-&lt;p&gt;&lt;img src=&quot;https://universalarticles.com/wp-content/uploads/2019/11/github.png&quot; alt=&quot;alt&quot;&gt;&lt;/p&gt;
-&lt;br /&gt;
-&lt;p&gt;나를 비롯한 많은 초보 개발자부터 경력이 많은 개발자까지, 개발자에게 있어서 Git과 Github는 필수적인 존재이다.  &lt;/p&gt;
-&lt;p&gt;그러나 나를 포함한 많은 초보 개발자분들은, Git과 Github의 차이를 잘 모르고 사용하는 분들이 많다. 물론 이 글을 쓰기 전의 나도 그랬다.    &lt;/p&gt;
-&lt;p&gt;혹자는 다음과 같이 말하기도 한다.&lt;/p&gt;
+&lt;p&gt;이렇게 만든 issue들은 당연히 수정을 할 수 있는데, &lt;code class=&quot;language-text&quot;&gt;@User&lt;/code&gt; 키워드를 사용해서 같은 member를 태그하거나 &lt;code class=&quot;language-text&quot;&gt;#Ref&lt;/code&gt;를 이용하여 특정 issue를 참조하여 설명을 추가할 수 있다.&lt;/p&gt;
+&lt;p&gt;부족한 설명들은, 팀원과의 협업에 저해가 되는 요소이니 꼭 충분한 설명으로 팀원들의 이해를 도와주자. :)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Git과 Github의 차이]]></title><description><![CDATA[나를 비롯한 많은 초보 개발자부터 경력이 많은 개발자까지, 개발자에게 있어서 Git과 Github는 필수적인 존재이다. 그러나 나를 포함한 많은 초보 개발자분들은, Git과 Github…]]></description><link>https://samsara-ku.dev/common_sense/difference-between-git-and-github/</link><guid isPermaLink="false">https://samsara-ku.dev/common_sense/difference-between-git-and-github/</guid><pubDate>Wed, 15 Apr 2020 16:23:13 GMT</pubDate><content:encoded>&lt;p&gt;나를 비롯한 많은 초보 개발자부터 경력이 많은 개발자까지, 개발자에게 있어서 Git과 Github는 필수적인 존재이다.&lt;/p&gt;
+&lt;p&gt;그러나 나를 포함한 많은 초보 개발자분들은, Git과 Github의 차이를 잘 모르고 사용하는 분들이 많다. 물론 이 글을 쓰기 전의 나도 그랬다.&lt;/p&gt;
+&lt;p&gt;둘의 차이를 잘 모르는 사람이 이 글의 서두를 보면 다음과 같이 말하지 않을까?&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;엥? Git이랑 Github랑 같은거 아니에요? &lt;/p&gt;
+&lt;p&gt;엥? Git이랑 Github랑 같은 거 아니에요?&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;땡. 완벽하게 틀렸다. 물론 둘의 차이를 몰라도 코딩을 하는데에는 개인적으로 상관이 없다고 생각한다. &lt;/p&gt;
-&lt;p&gt;하지만 모르는 것을 알고서 넘어가는 것과 모르는 것을 모르고 넘어가는 것의 차이는 명확하다. 또한 모르는 것을 알고 있다고 착각하고 사는 것과 모르는 것을 실제로 알고 넘어가는것의 차이도.&lt;/p&gt;
+&lt;p&gt;땡. 완벽하게 틀렸다. 물론 둘의 차이를 몰라도 코딩을 하는 데에는 개인적으로 상관이 없다고 생각한다.&lt;/p&gt;
+&lt;p&gt;하지만 모르는 것을 알고서 넘어가는 것과 모르는 것을 모르고 넘어가는 것의 차이는 분명히 있다.&lt;/p&gt;
 &lt;p&gt;그러한 이유로 이번에는 Git이 무엇이고, Github는 무엇이며, 둘의 차이는 무엇인지 한 번 알아보도록 하자.&lt;/p&gt;
-&lt;hr&gt;
 &lt;h1 id=&quot;1-git&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-git&quot; aria-label=&quot;1 git permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Git&lt;/h1&gt;
-&lt;p&gt;Git은 &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;VCS(Version Control System)&lt;/code&gt;&lt;/strong&gt;이다.    &lt;/p&gt;
-&lt;p&gt;이름에서도 그것의 의미를 충분히 유추할 수 있다. 예시를 하나 들어보자.&lt;/p&gt;
-&lt;p&gt;이 글을 읽고 있는 당신과 당신을 포함한 수 많은 개발자들은 코드를 &lt;strong&gt;단 한번&lt;/strong&gt;에 짜는 것이 힘든것을 알고있다. &lt;/p&gt;
-&lt;p&gt;프로젝트의 규모가 작다면 가능한 이야기일지 몰라도, 아무리 머리가 좋은 프로그래머여도 프로젝트의 규모가 커진다면 불가능한 이야기이다.    &lt;/p&gt;
-&lt;p&gt;그러한 상황에서 우리 개발자들은 하나의 &lt;strong&gt;“목표”&lt;/strong&gt;, 즉 프로그램의 완성을 위하여 차근차근 단계를 밟아가면서 만들기 마련이다.  &lt;/p&gt;
-&lt;p&gt;그러한 과정에서 프로그램의 버전이 나오기 마련이다. 버전 1.0에서는 로그인 기능을 구현했고, 버전 1.1에서는 레이아웃을 다듬고, 버전 1.2에서는 api를 사용해서 특정 정보를 가져오는 등의 순차적 개발이 일어날것이다.  &lt;/p&gt;
-&lt;p&gt;그런데 만약 작업을 하다 버전 2.0에서 오류가 나서 다시 버전을 예전으로 돌려야 하는데 정보가 남아있지 않다면? 코드를 다시 돌리기 위해서 엄청난 노력을 해야만 다시 예전 버전으로 돌릴 수 있을 것이다.&lt;/p&gt;
-&lt;p&gt;이런 불상사를 미연에 방지하기 위하여 만든것이 VCS, 즉 &lt;strong&gt;버전 관리 시스템&lt;/strong&gt;이다. VCS는 수정된 파일을 저장해주고, 백업을 해주는 등의 귀찮은 수작업을 대신해준다. 또한 어떤 파일이 수정되었는지, 예전으로 롤백하는 방법을 알려주기도 한다.&lt;/p&gt;
+&lt;p&gt;Git은 가장 유명한 &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;VCS(Version Control System)&lt;/code&gt;&lt;/strong&gt;이다.&lt;/p&gt;
+&lt;p&gt;이 글을 읽고 있는 당신과 당신을 포함한 수 많은 개발자는 코드를 &lt;strong&gt;단 한 번&lt;/strong&gt;에 짜는 것이 힘든 것을 알고 있다.&lt;/p&gt;
+&lt;p&gt;프로젝트의 규모가 작다면 가능한 이야기일지 몰라도, 아무리 머리가 좋은 프로그래머여도 프로젝트의 규모가 커진다면 불가능한 이야기이다.&lt;/p&gt;
+&lt;p&gt;그러한 상황에서 우리 개발자들은 하나의 &lt;strong&gt;목표&lt;/strong&gt;, 즉 프로그램의 완성을 위하여 차근차근 단계를 밟아가면서 만들기 마련이다.&lt;/p&gt;
+&lt;p&gt;그러한 과정에서 프로그램의 버전이 나오기 마련이다. 버전 1.0에서는 로그인 기능을 구현했고, 버전 1.1에서는 레이아웃을 다듬고, 버전 1.2에서는 API를 사용해서 특정 정보를 가져오는 등의 순차적 개발이 일어날 것이다.&lt;/p&gt;
+&lt;p&gt;그런데 만약 작업 하다 버전 2.0에서 오류가 나서 다시 버전을 예전으로 돌려야 하는데 정보가 남아있지 않다면? 코드를 다시 돌리기 위해서 엄청난 노력을 해야만 다시 예전 버전으로 돌릴 수 있을 것이다.&lt;/p&gt;
+&lt;p&gt;이런 불상사를 미리 방지하기 위하여 만든 것이 VCS, 즉 &lt;strong&gt;버전 관리 시스템&lt;/strong&gt;이다. VCS는 수정된 파일을 저장해주고, 백업을 해주는 등의 귀찮은 수작업을 대신해준다. 또한, 어떤 파일이 수정되었는지 예전으로 롤백하는 방법을 알려주기도 한다.&lt;/p&gt;
 &lt;p&gt;이제 우리는 편하게 버전을 관리할 수 있게 되었다.&lt;/p&gt;
-&lt;hr&gt;
 &lt;h1 id=&quot;2-github&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-github&quot; aria-label=&quot;2 github permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Github&lt;/h1&gt;
-&lt;p&gt;그런데 이번에는 위의 문제보다 심각한 문제가 발생했다. VCS를 이용해서 편리하게 개발을 하고 있다가, 컴퓨터가 고장이 나서 다시 되살릴수가 없게 되었다! &lt;/p&gt;
-&lt;p&gt;그래서 새 컴퓨터를 구해서 다시 코딩을 해야하는데, 나에게 이제 남은 정보는 어렴풋이 나는 기억들밖에 없다. 이럴 때는 어떻게 해야할까? &lt;/p&gt;
-&lt;p&gt;이러한 문제를 해결하기 위하여 Github라는 &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;클라우드 스토리지&lt;/code&gt;&lt;/strong&gt;를 사용하는 것이다. &lt;/p&gt;
-&lt;p&gt;만약 우리의 로컬에 심각한 오류가 발생해서 되살릴 수 없더라도, 이를 미리 클라우드 서버에 올려놓는다면 우리는 나중에 다시 그 파일들을 다운로드하기만 하면 다시 작업을 진행할 수 있을 것이다.  &lt;/p&gt;
-&lt;p&gt;또한 클라우드 서버에 정보를 올리기 때문에, 한 프로젝트에 여러 명의 사람들이 참여해도 우리는 클라우드 서버에 업로드 되어있는 파일들을 볼 수 있고 수정하여 다시 올릴 수 있다.&lt;/p&gt;
-&lt;p&gt;또한 모르는 사람들도 내 코드를 볼 수 있기 때문에(내가 오픈소스로 열었을 때), 내가 모르는 치명적인 결함을 다른 사람들이 보고를 해서 수정을 해줄 수 있다는 점에서 엄청난 생산성을 보여줄 수 있다. &lt;/p&gt;
-&lt;p&gt;이처럼, Git과 같은 VCS를 클라우드 형식으로 관리하는것을 Github라고 말한다.&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;여기까지 Git과 Github의 차이를 짤막하고 쉽게 알아보았다.    &lt;/p&gt;
-&lt;p&gt;개발에 정말 꼭 필요한 내용은 아니라고 생각한다. 몰라도 어느정도의 코딩들은 가능하니까. 이전의 내가 그랬었고. &lt;/p&gt;
-&lt;p&gt;하지만 &lt;strong&gt;“내가 쓰는 프로그램이 무엇이고, 이게 어떠한 기능을 가지고 있는지는 알아야하지 않을까?”&lt;/strong&gt; 라는 생각에 이 글을 쓰게 되었다.  &lt;/p&gt;
-&lt;p&gt;나중에 천천히 git의 command에 대해서 정리하는 포스트를 만들어봐야겠다. 항상 사용하고 있는 git이지만, 너무나도 어렵다..&lt;/p&gt;
-&lt;p&gt;부디 이 글을 읽는 사람들이 Git과 Github의 차이를 알게되는 것에 도움이 되었으면 하는 바람이다 :)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[마크다운 작성법]]></title><description><![CDATA[😢 해당 포스트는 마이그레이션중인 포스트에요! 추후 업데이트 필요! 이전의 post에서 Markup과 Markdown의 차이에 대해서 알아보았다. 이번 post에서는 Markdown이 무엇인지 알았으니, Markdown…]]></description><link>https://samsara-ku.dev/common_sense/how-to-write-markdown/</link><guid isPermaLink="false">https://samsara-ku.dev/common_sense/how-to-write-markdown/</guid><pubDate>Mon, 13 Apr 2020 16:22:13 GMT</pubDate><content:encoded>&lt;h3 id=&quot;-해당-포스트는-마이그레이션중인-포스트에요-추후-업데이트-필요&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%ED%95%B4%EB%8B%B9-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%8A%94-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98%EC%A4%91%EC%9D%B8-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EC%97%90%EC%9A%94-%EC%B6%94%ED%9B%84-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%ED%95%84%EC%9A%94&quot; aria-label=&quot; 해당 포스트는 마이그레이션중인 포스트에요 추후 업데이트 필요 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;😢 해당 포스트는 마이그레이션중인 포스트에요! 추후 업데이트 필요!&lt;/h3&gt;
-&lt;br /&gt;
-&lt;p&gt;이전의 post에서 Markup과 Markdown의 차이에 대해서 알아보았다.&lt;/p&gt;
-&lt;p&gt;이번 post에서는 Markdown이 무엇인지 알았으니, Markdown은 어떻게 작성해야 하는지에 대해서 알아보도록 하겠다. &lt;/p&gt;
-&lt;p&gt;사실 많은 blog나 github에 이미 Markdown의 작성법이 나와있지만 이전의 포스트에서도 그랬듯이 익숙해지기 위해선 일단 공부를하고, 그 공부한 내용을 스스로 어딘가에 작성하여 반복적으로 보는것이 도움이 된다.    &lt;/p&gt;
-&lt;p&gt;그러한 이유로 이번에는 Markdown의 작성법에 대해서 알아보자! &lt;/p&gt;
-&lt;p&gt;다음은 마크다운 작성법이다.&lt;/p&gt;
-&lt;hr&gt;
+&lt;p&gt;그런데 이번에는 위의 문제보다 심각한 문제가 발생했다. VCS를 이용해서 편리하게 개발을 하고 있다가, 컴퓨터가 고장이 나서 다시 되살릴 수가 없게 되었다! &lt;/p&gt;
+&lt;p&gt;그래서 새 컴퓨터를 구해서 다시 코딩을 해야 하는데, 나에게 이제 남은 정보는 어렴풋이 나는 기억들밖에 없다. 이럴 때는 어떻게 해야 할까? &lt;/p&gt;
+&lt;p&gt;이러한 문제를 해결하기 위하여 Github라는 &lt;strong&gt;&lt;code class=&quot;language-text&quot;&gt;클라우드 스토리지&lt;/code&gt;&lt;/strong&gt;를 사용하는 것이다.&lt;/p&gt;
+&lt;p&gt;만약 우리의 로컬에 심각한 오류가 발생해서 되살릴 수 없더라도, 이를 미리 클라우드 서버에 올려놓는다면 우리는 나중에 다시 그 파일들을 다운로드만 하면 다시 작업을 진행할 수 있을 것이다.&lt;/p&gt;
+&lt;p&gt;또한, 클라우드 서버에 정보를 올리기 때문에 한 프로젝트에 여러 명의 사람이 참여해도 우리는 클라우드 서버에 업로드 되어있는 파일들을 볼 수 있고 수정하여 다시 올릴 수 있다.&lt;/p&gt;
+&lt;p&gt;또한, 모르는 사람들도 내 코드를 볼 수 있기 때문에(내가 오픈소스로 열었을 때) 내가 모르는 치명적인 결함을 다른 사람들이 보고해서 수정을 해줄 수 있다는 점에서 엄청난 생산성을 보여줄 수 있다.&lt;/p&gt;
+&lt;p&gt;이처럼, Github는 Git을 클라우드 형식으로 관리한다. 그리고 이런 클라우드를 제공하는 사이트는 Github 뿐만 아니라, bitbucket, gitlab 등이 있다.&lt;/p&gt;
+&lt;p&gt;여기까지 Git과 Github의 차이를 짤막하고 쉽게 알아보았다.&lt;/p&gt;
+&lt;p&gt;개발에 정말 꼭 필요한 내용은 아니라고 생각한다. 몰라도 어느 정도의 코딩들은 가능하니까. 이전의 내가 그랬었고.&lt;/p&gt;
+&lt;p&gt;하지만 &lt;strong&gt;내가 쓰는 프로그램이 무엇이고, 이게 어떠한 기능을 가졌는지는 알아야 하지 않을까?&lt;/strong&gt; 라는 생각에 이 글을 쓰게 되었다.&lt;/p&gt;
+&lt;p&gt;나중에 천천히 git의 command에 대해서 정리하는 포스트를 만들어봐야겠다. 항상 사용하고 있는 git이지만, 너무나도 어렵다..&lt;/p&gt;</content:encoded></item><item><title><![CDATA[마크다운 작성법]]></title><description><![CDATA[이전의 post에서 Markup과 Markdown의 차이에 대해서 알아보았다. 이전 post에서는 Markdown이 무엇인지 알았으니, 이번에는 Markdown을 잘 사용하기 위해서 연습용 포스트를 올려봤다! 1. Header 1.…]]></description><link>https://samsara-ku.dev/common_sense/how-to-write-markdown/</link><guid isPermaLink="false">https://samsara-ku.dev/common_sense/how-to-write-markdown/</guid><pubDate>Mon, 13 Apr 2020 16:22:13 GMT</pubDate><content:encoded>&lt;p&gt;이전의 post에서 Markup과 Markdown의 차이에 대해서 알아보았다.&lt;/p&gt;
+&lt;p&gt;이전 post에서는 Markdown이 무엇인지 알았으니, 이번에는 Markdown을 잘 사용하기 위해서 연습용 포스트를 올려봤다!&lt;/p&gt;
 &lt;h1 id=&quot;1-header&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-header&quot; aria-label=&quot;1 header permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Header&lt;/h1&gt;
 &lt;h3 id=&quot;11-큰-제목&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#11-%ED%81%B0-%EC%A0%9C%EB%AA%A9&quot; aria-label=&quot;11 큰 제목 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.1. 큰 제목&lt;/h3&gt;
 &lt;h1 id=&quot;header&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#header&quot; aria-label=&quot;header permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Header&lt;/h1&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Header
 ======&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;h3 id=&quot;12-작은-제목&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#12-%EC%9E%91%EC%9D%80-%EC%A0%9C%EB%AA%A9&quot; aria-label=&quot;12 작은 제목 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.2. 작은 제목&lt;/h3&gt;
 &lt;h2 id=&quot;header-1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#header-1&quot; aria-label=&quot;header 1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Header&lt;/h2&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Header
 ------&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;h3 id=&quot;13-글-머리&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#13-%EA%B8%80-%EB%A8%B8%EB%A6%AC&quot; aria-label=&quot;13 글 머리 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1.3. 글 머리&lt;/h3&gt;
 &lt;h1 id=&quot;h1&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#h1&quot; aria-label=&quot;h1 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;h1&lt;/h1&gt;
 &lt;h2 id=&quot;h2&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#h2&quot; aria-label=&quot;h2 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;h2&lt;/h2&gt;
@@ -1017,14 +1643,11 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 ##### h5
 ###### h6
 ####### h7 (없음)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
-&lt;hr&gt;
 &lt;h1 id=&quot;2-backquote&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-backquote&quot; aria-label=&quot;2 backquote permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Backquote&lt;/h1&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;quot;&amp;gt;&amp;quot; 문자를 사용한다&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;gt; This is first block.
 &amp;gt;   &amp;gt; This is second block.
 &amp;gt;   &amp;gt;   &amp;gt; This is third block.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;blockquote&gt;
 &lt;p&gt;This is first block.&lt;/p&gt;
 &lt;blockquote&gt;
@@ -1039,20 +1662,12 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h3 id=&quot;this-is-h3&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#this-is-h3&quot; aria-label=&quot;this is h3 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;This is H3&lt;/h3&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;List&lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;In-line code&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/li&gt;
+&lt;li&gt;List&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/blockquote&gt;
 &lt;/blockquote&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;gt; ### This is H3
-&amp;gt;   &amp;gt;   * List
-&amp;gt;   &amp;gt;   &amp;gt; `In-line code`&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
-&lt;hr&gt;
+&amp;gt;   &amp;gt;   * List&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;h1 id=&quot;3-ordered-list&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#3-ordered-list&quot; aria-label=&quot;3 ordered list permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;3. Ordered-list&lt;/h1&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;순서가 있는 리스트는 숫자와 온점을 사용한다&lt;/code&gt;&lt;/p&gt;
 &lt;ol&gt;
@@ -1063,7 +1678,6 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;1. First
 2. Second
 3. Third&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;c.f) 순서가 있는 리스트는, 숫자를 임의의 순서대로 적어내려도 내림차순으로 정리되니 조심하자&lt;/code&gt;&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;First&lt;/li&gt;
@@ -1075,8 +1689,6 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 4. Forth
 3. Second
 2. Third&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
-&lt;hr&gt;
 &lt;h1 id=&quot;4-unordered-list&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#4-unordered-list&quot; aria-label=&quot;4 unordered list permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;4. Unordered-list&lt;/h1&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;순서가 없는 리스트는 &amp;quot;*&amp;quot;, &amp;quot;+&amp;quot;, &amp;quot;-&amp;quot;를 사용한다&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
@@ -1123,7 +1735,6 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 - First
     - Second
         - Third&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;셋의 기호를 혼합해서 사용이 가능함, 그러나 3번째 list 아래로는 모양이 통일되므로 주의&lt;/code&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -1159,8 +1770,6 @@ addTogether()&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
             * Forth
                 + Fifth
                     - Sixth&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
-&lt;hr&gt;
 &lt;h1 id=&quot;5-normal-text&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#5-normal-text&quot; aria-label=&quot;5 normal text permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;5. Normal Text&lt;/h1&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;4개의 공백 또는 하나의 탭키가 나오기 전까지는 한 줄로 이어져서 나온다&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;This is first sentence.
@@ -1169,29 +1778,24 @@ This is third sentence.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;This is first sentence.
     This is second sentence.
         This is third sentence.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;p&gt;This is first sentence.&lt;br&gt;
 This is second sentence.&lt;br&gt;
 This is third sentence.&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;This is first sentence.     
 This is second sentence.    
 This is third sentence.&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
-&lt;hr&gt;
 &lt;h1 id=&quot;6-codes&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#6-codes&quot; aria-label=&quot;6 codes permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;6. Codes&lt;/h1&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;태그를 사용하는 방식과, 코드블럭코드를 사용하는 방법 2가지가 있다&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;61-코드블럭코드를-사용하는-방법&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#61-%EC%BD%94%EB%93%9C%EB%B8%94%EB%9F%AD%EC%BD%94%EB%93%9C%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95&quot; aria-label=&quot;61 코드블럭코드를 사용하는 방법 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;6.1. 코드블럭코드(”~~~“)를 사용하는 방법&lt;/h3&gt;
-&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;c.f) &amp;quot;~&amp;quot;는 backtick으로 대체가 가능하다&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;p.s) &amp;quot;~~~&amp;quot;는 백틱(&amp;quot;```&amp;quot;)으로 대체가 가능하다&lt;/code&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;This is code paragraph
 You can put everything on this block
 Just do it!&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;~~~
 This is code paragraph
 You can put everything on this block
 Just do it!
 ~~~&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;h3 id=&quot;62-code-classlanguage-textltpregtltcodegtltcodegtltpregtcode-태그를-사용하는-방식&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#62-code-classlanguage-textltpregtltcodegtltcodegtltpregtcode-%ED%83%9C%EA%B7%B8%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%8A%94-%EB%B0%A9%EC%8B%9D&quot; aria-label=&quot;62 code classlanguage textltpregtltcodegtltcodegtltpregtcode 태그를 사용하는 방식 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;6.2. &lt;code class=&quot;language-text&quot;&gt;&amp;lt;pre&amp;gt;&amp;lt;code&amp;gt;&amp;lt;/code&amp;gt;&amp;lt;/pre&amp;gt;&lt;/code&gt; 태그를 사용하는 방식&lt;/h3&gt;
 &lt;pre&gt;
 &lt;code&gt;
@@ -1200,7 +1804,6 @@ You can put everything on this block
 Just do it!
 &lt;/code&gt;
 &lt;/pre&gt;
-&lt;br/&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;lt;pre&amp;gt;
 &amp;lt;code&amp;gt;
 This is code paragraph
@@ -1208,8 +1811,6 @@ You can put everything on this block
 Just do it!
 &amp;lt;/code&amp;gt;
 &amp;lt;/pre&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
-&lt;hr&gt;
 &lt;h1 id=&quot;7-horizontal-line&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#7-horizontal-line&quot; aria-label=&quot;7 horizontal line permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;7. Horizontal line&lt;/h1&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;다음과 같은 다양한 방법으로 구분선을 표기해줄 수 있다&lt;/code&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -1226,8 +1827,6 @@ Just do it!
 - - -
 
 ---------------------------------------&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
-&lt;hr&gt;
 &lt;h1 id=&quot;8-link&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#8-link&quot; aria-label=&quot;8 link permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;8. Link&lt;/h1&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;내부링크와 외부링크가 있다&lt;/code&gt;
 &lt;/p&gt;
@@ -1236,7 +1835,6 @@ Just do it!
 &lt;p&gt;&lt;a href=&quot;#top&quot;&gt;Go to the first sentence&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;Form: [link keyword][#id]
 Real example: [Go to the first sentence](#top)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;h3 id=&quot;82-external-link&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#82-external-link&quot; aria-label=&quot;82 external link permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;8.2. External link&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;내부링크와 비슷한 방법으로, 또는 약간 다른 방법을 이용하여 선언하여 이용할 수 있다&lt;/code&gt;&lt;/p&gt;
 &lt;h4 id=&quot;821-reference-external-link&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#821-reference-external-link&quot; aria-label=&quot;821 reference external link permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;8.2.1. Reference external link&lt;/h4&gt;
@@ -1247,16 +1845,12 @@ Real example: [Go to the first sentence](#top)&lt;/code&gt;&lt;/pre&gt;&lt;/div&
 
 [1]:https://google.com/ &amp;quot;구글&amp;quot;
 [2]:https://naver.com/  &amp;quot;네이버&amp;quot;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;h4 id=&quot;822-in-line-external-link&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#822-in-line-external-link&quot; aria-label=&quot;822 in line external link permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;8.2.2. In-line external link&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.google.com&quot; title=&quot;구글&quot;&gt;Google&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;[Google](https://www.google.com &amp;quot;구글&amp;quot;)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;h4 id=&quot;823-url-external-link&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#823-url-external-link&quot; aria-label=&quot;823 url external link permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;8.2.3. URL external link&lt;/h4&gt;
 &lt;p&gt;&lt;a href=&quot;https://www.google.com&quot;&gt;https://www.google.com&lt;/a&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;&amp;lt;https://www.google.com&amp;gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
-&lt;hr&gt;
 &lt;h1 id=&quot;9-emphasis&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#9-emphasis&quot; aria-label=&quot;9 emphasis permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;9. Emphasis&lt;/h1&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;이탤릭체와 볼드체, 두 가지의 종류가 있다&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;91-italic&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#91-italic&quot; aria-label=&quot;91 italic permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;9.1. Italic&lt;/h3&gt;
@@ -1265,15 +1859,12 @@ Real example: [Go to the first sentence](#top)&lt;/code&gt;&lt;/pre&gt;&lt;/div&
 &lt;em&gt;Hi&lt;/em&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;*Hi*    
 _Hi_&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;h3 id=&quot;92-bold&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#92-bold&quot; aria-label=&quot;92 bold permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;9.2. Bold&lt;/h3&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;** 또는 __로 감싼 텍스트&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;Hi&lt;/strong&gt;&lt;br&gt;
 &lt;strong&gt;Hi&lt;/strong&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;**Hi**  
 __Hi__&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
-&lt;hr&gt;
 &lt;h1 id=&quot;10-image&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#10-image&quot; aria-label=&quot;10 image permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;10. Image&lt;/h1&gt;
 &lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;말 그대로 이미지를 넣는 방법이다. 이미지를 넣는 방법도 여러 가지이다.&lt;/code&gt;&lt;/p&gt;
 &lt;h3 id=&quot;101-in-line-image&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#101-in-line-image&quot; aria-label=&quot;101 in line image permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;10.1. In-line image&lt;/h3&gt;
@@ -1301,11 +1892,9 @@ __Hi__&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
       /&gt;
     &lt;/span&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;![alt text](../../assets/posts/1.jpg)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;h3 id=&quot;102-link-image&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#102-link-image&quot; aria-label=&quot;102 link image permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;10.2. link image&lt;/h3&gt;
 &lt;p&gt;&lt;img src=&quot;https://camo.githubusercontent.com/202c9ae1d457d6109be6c4cf13db9cac5fd708a6/687474703a2f2f6366696c65362e75662e746973746f72792e636f6d2f696d6167652f32343236453634363534334339423435333243374230&quot; alt=&quot;alt text&quot;&gt;&lt;/p&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;![alt text](https://camo.githubusercontent.com/202c9ae1d457d6109be6c4cf13db9cac5fd708a6/687474703a2f2f6366696c65362e75662e746973746f72792e636f6d2f696d6167652f32343236453634363534334339423435333243374230)&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
 &lt;h3 id=&quot;103-reference-image&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#103-reference-image&quot; aria-label=&quot;103 reference image permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;10.3. Reference image&lt;/h3&gt;
 &lt;p&gt;&lt;span
       class=&quot;gatsby-resp-image-wrapper&quot;
@@ -1332,48 +1921,43 @@ __Hi__&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;text&quot;&gt;&lt;pre class=&quot;language-text&quot;&gt;&lt;code class=&quot;language-text&quot;&gt;![alt text][1]
 
 [1]:../../assets/posts/2.jpg&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;br/&gt;
-&lt;hr&gt;
-&lt;p&gt;이상 여러가지 Markdown 작성법에 대해서 알아보았다.  &lt;/p&gt;
-&lt;p&gt;처음에 인터넷에서 봤을때는 얼마없다고 생각해서 금방 작성할 것이라고 생각했는데, 생각보다 양이 너무 많다..   &lt;/p&gt;
-&lt;p&gt;그리고 아직도 작성하지 못한 Markdown요소들도 있다.. &lt;/p&gt;
-&lt;p&gt;Table, footnotes, fold 등등.. 요긴하게 쓰일 요소들이 너무 많다. &lt;/p&gt;
-&lt;p&gt;나중에 시간이 된다면 한번에 업데이트하거나 내가 필요로 요구할 때, 사용하기에 먼저 앞서서 이 글에다가 업데이트하는 방법도 나쁘지 않은 것 같다. (솔직히 이 정도까지만 해도 내가 평생 쓸 Markdown 요소들은 다 써놓은 것 같기는 하지만..)   &lt;/p&gt;
-&lt;p&gt;이거 작성하면서 열심히 공부도 된 느낌이니 나중에도 좀 다시 보면서 공부해야겠다. :)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[마크업과 마크다운의 차이]]></title><description><![CDATA[😢 해당 포스트는 마이그레이션중인 포스트에요! 추후 업데이트 필요! Web page에 글을 쓰기 위해서는 Markdown이라는 것을 알아야한다는 정보를 들어서, Markdown을 인터넷에 검색해보니 다음과 같이 나왔다. “Markdown…]]></description><link>https://samsara-ku.dev/common_sense/difference-between-markup-and-markdown/</link><guid isPermaLink="false">https://samsara-ku.dev/common_sense/difference-between-markup-and-markdown/</guid><pubDate>Sun, 12 Apr 2020 16:22:13 GMT</pubDate><content:encoded>&lt;h3 id=&quot;-해당-포스트는-마이그레이션중인-포스트에요-추후-업데이트-필요&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#-%ED%95%B4%EB%8B%B9-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EB%8A%94-%EB%A7%88%EC%9D%B4%EA%B7%B8%EB%A0%88%EC%9D%B4%EC%85%98%EC%A4%91%EC%9D%B8-%ED%8F%AC%EC%8A%A4%ED%8A%B8%EC%97%90%EC%9A%94-%EC%B6%94%ED%9B%84-%EC%97%85%EB%8D%B0%EC%9D%B4%ED%8A%B8-%ED%95%84%EC%9A%94&quot; aria-label=&quot; 해당 포스트는 마이그레이션중인 포스트에요 추후 업데이트 필요 permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;😢 해당 포스트는 마이그레이션중인 포스트에요! 추후 업데이트 필요!&lt;/h3&gt;
-&lt;br /&gt;
-&lt;p&gt;Web page에 글을 쓰기 위해서는 Markdown이라는 것을 알아야한다는 정보를 들어서, Markdown을 인터넷에 검색해보니 다음과 같이 나왔다.&lt;/p&gt;
+&lt;p&gt;이상 여러 가지 Markdown 작성법에 대해서 알아보았다.&lt;/p&gt;
+&lt;p&gt;처음에 인터넷에서 봤을 때는 얼마 없다고 생각해서 금방 작성할 것으로 생각했는데, 생각보다 양이 너무 많다..&lt;/p&gt;
+&lt;p&gt;그리고 아직도 작성하지 못한 Markdown 요소들도 있다. Table, footnotes, fold 등 요긴하게 쓰일 요소들이 너무 많아 보이지만 시간문제로 패스..&lt;/p&gt;
+&lt;p&gt;이거 작성하면서 열심히 공부도 된 느낌이니, 나중에 도움이 될 것으로 생각한다 :)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[마크업과 마크다운의 차이]]></title><description><![CDATA[개발을 시작한 지 약 두 달, 인터넷의 개발 블로그들을 보면서 나도 개인적인 개발 블로그를 하나 갖고 싶은 욕구가 생겼다. 쓸데없는 잡지식을 몇 개 주워들었던 나는, 웹 페이지에 글을 쓰기 위해서는 Markdown…]]></description><link>https://samsara-ku.dev/common_sense/difference-between-markup-and-markdown/</link><guid isPermaLink="false">https://samsara-ku.dev/common_sense/difference-between-markup-and-markdown/</guid><pubDate>Sun, 12 Apr 2020 16:22:13 GMT</pubDate><content:encoded>&lt;p&gt;개발을 시작한 지 약 두 달, 인터넷의 개발 블로그들을 보면서 나도 개인적인 개발 블로그를 하나 갖고 싶은 욕구가 생겼다.&lt;/p&gt;
+&lt;p&gt;쓸데없는 잡지식을 몇 개 주워들었던 나는, 웹 페이지에 글을 쓰기 위해서는 Markdown을 사용한다는 것을 알고 있었다. 근데 무엇이 Markdown이지?&lt;/p&gt;
+&lt;p&gt;모를 때는 역시 구글링이지 생각하며, Markdown을 구글링하니 다음과 같은 정보를 볼 수 있었다.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;“Markdown이란것은, Markup language의 일종이다.”&lt;/p&gt;
+&lt;p&gt;“Markdown은 Markup language의 일종이다.”&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;Html, css, javascript를 공부한지 어언 약 2개월인 나에게 상당히 헷갈리는 문장이었다. Html이 Markup language인건 알겠는데, 생각해보니 Markup language가 무엇인지 나는 잘 모르잖아?    &lt;/p&gt;
-&lt;p&gt;의문이 들면, 공부를 해야하고, 공부를 한 것을 잊어버리지 않으려면 어딘가에 적어놓고 두고두고 읽어서 복습하는게 최고의 방법인 것 같다. 말이 나온김에 한번 Markup이 무엇인지, Markdown은 또 무엇인지 한 번 알아보도록 하자.&lt;/p&gt;
-&lt;h3 id=&quot;1-markup-language&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-markup-language&quot; aria-label=&quot;1 markup language permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Markup Language&lt;/h3&gt;
-&lt;p&gt;Markup Language를 검색하면 다음과 같이 나온다.  &lt;/p&gt;
+&lt;p&gt;HTML, CSS, Javascript를 공부하고 있던 나에게 위 문장은 이해가 잘 가지 않았다. HTML이 Markup language이라는 건 몇 번 들어봤지만, 웃기게도 나는 내가 사용하는 Markup language가 무엇을 의미하는지 잘 모르고 있었다.&lt;/p&gt;
+&lt;p&gt;의문이 들면, 공부를 해야 하고, 공부한 것을 잊어버리지 않으려면 기록을 남기는 게 최고의 방법이라고 생각한다. 또한, 초보 개발자인 내가 가려야 할 지식이 있을까(?)도 싶다. 그래서 Markup이 무엇인지, Markdown은 또 무엇인지 한 번 알아보도록 하겠다.&lt;/p&gt;
+&lt;h1 id=&quot;1-markup-language&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#1-markup-language&quot; aria-label=&quot;1 markup language permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;1. Markup Language&lt;/h1&gt;
+&lt;p&gt;Markup Language를 검색하면 다음과 같이 나온다.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“마크업 언어(Markup Language)는 문서가 화면에 표시되는 형식을 나타내거나 데이터의 논리적인 구조를 명시하기 위한 규칙들을 정의한 언어의 일종이다. 데이터를 기술한 언어라는 점에서 프로그래밍 언어와는 차이가 있다.”&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;우리는 &lt;strong&gt;“데이터의 논리구조를 명시하기 위한 규칙들을 정의한 언어의 일종”&lt;/strong&gt;이라는 부분에 집중해야한다. 어떠한 데이터를 가지고 그것을 수학적으로 가지고 놀겠다는 의미가 아니라, 데이터를 화면에 표시하기 위해서 사용하는 언어라는것이다. &lt;/p&gt;
-&lt;p&gt;여기서 우리는 컴퓨터공학을 전공하면 자주보는 일종의 meme을 자주 볼 수 있는데,   &lt;/p&gt;
+&lt;p&gt;우리는 “데이터의 논리구조를 명시하기 위한 규칙들을 정의한 언어의 일종”이라는 부분에 집중해야 한다. 어떠한 데이터를 가지고 그것을 수학적으로 가지고 놀겠다는 의미가 아니라, 데이터를 화면에 표시하기 위해서 사용하는 언어라는 것이다.&lt;/p&gt;
+&lt;p&gt;위 내용을 자세히 읽어보고, 아래에 있는 각종 개발 블로그나 SNS 등에 올라오는 meme을 한번 보자. &lt;/p&gt;
 &lt;p&gt;&lt;img src=&quot;https://i.redd.it/6s8yeenm3a401.jpg&quot; alt=&quot;alt&quot;&gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;A: “언어 뭐 할 줄 아세요?”&lt;br&gt;
 B: “HTML이요”&lt;br&gt;
-A: ”…?”  &lt;/p&gt;
+A: ”…?”&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;이는 틀린표현이다. 위에서도 말했지만, html은 데이터를 기술하기 위한 markup language다. 컴퓨터 공학에서, 우리가 특정한 언어를 다룰 줄 안다고 할 때의 그 언어는 &lt;strong&gt;“마크업 언어”&lt;/strong&gt;가 아닌 &lt;strong&gt;“프로그래밍 언어”&lt;/strong&gt;임을 우리는 알아야한다.   &lt;/p&gt;
-&lt;p&gt;Markup language의 예시로는 우리가 웹사이트를 표시하기 위한 언어인 html가 있다. &lt;/p&gt;
-&lt;h3 id=&quot;2-markdown&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-markdown&quot; aria-label=&quot;2 markdown permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Markdown&lt;/h3&gt;
-&lt;p&gt;그렇다면 Markdown은 무엇일까? Markdown을 검색하면 다음과 같이 나온다.   &lt;/p&gt;
+&lt;p&gt;&lt;s&gt;여기서 웃어야합니다(하하하)&lt;/s&gt;&lt;/p&gt;
+&lt;p&gt;위의 내용에서 말했듯이, HTML은 데이터를 기술하기 위한 markup language다. 컴퓨터 공학에서 일반적으로 사용하는 &lt;strong&gt;언어&lt;/strong&gt;라는 개념은 &lt;strong&gt;마크업 언어&lt;/strong&gt;가 아닌 &lt;strong&gt;프로그래밍 언어&lt;/strong&gt;임을 우리는 모두 알 것이다.&lt;/p&gt;
+&lt;h1 id=&quot;2-markdown&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#2-markdown&quot; aria-label=&quot;2 markdown permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;2. Markdown&lt;/h1&gt;
+&lt;p&gt;그러면 Markdown은 무엇일까? Markdown을 검색하면 다음과 같이 나온다.&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;“마크다운 (Markdown)은 마크업 언어의 일종으로, 존 그루버(John Gruber)와 아론 스워츠(Aaron Swartz)가 만들었다. 온갖 태그로 범벅된 HTML 문서 등과 달리, 읽기도 쓰기도 쉬운 문서 양식을 지향한다.”   &lt;/p&gt;
+&lt;p&gt;“마크다운은 마크업 언어의 일종으로, 존 그루버(John Gruber)와 아론 스워츠(Aaron Swartz)가 만들었다. 온갖 태그로 범벅된 HTML 문서 등과 달리, 읽기도 쓰기도 쉬운 문서 양식을 지향한다. …”&lt;/p&gt;
 &lt;/blockquote&gt;
-&lt;p&gt;사실 Markdown은 이름에서도 유추가 가능하듯이, Markup language와 어느정도 연관이 있는 언어이다. 바로 Markup language의 일부이다. 특히 Markdown은 위에서 기술했듯이, Markup language가 TAG(”&lt;div&gt;&lt;/div&gt;“과 같은 구조)로 이루어져 사용하기 힘들기 때문에 만들어진 언어이다. &lt;/p&gt;
-&lt;p&gt;읽기도 쓰기도 쉬운 문서 양식을 지향하기 때문에, Markup에서 사용되던 tag구조는 사라졌고, 간단한 텍스트들과 몇 가지 문법만 알면 작성되도록 이루어져있다.  &lt;/p&gt;
-&lt;p&gt;지금 작성되고 있는, 이 글도 Markdown을 사용하고 있다. 확장자명은 .md이며 지금 이 글을 보고 있는 당신도 Markdown을 배운다면, 나처럼 blog를 만들 수 있을것이다.   &lt;/p&gt;
-&lt;p&gt;이로써 Web page를 만들기 위해서 가지고 있어야할 기본중의 기본으로 취급되는 Markup language와 Markdown language의 차이를 알아보게 되었다.   &lt;/p&gt;
-&lt;p&gt;만약 이 글을 읽고 있는 당신이 나처럼 Web Front-End Engineer를 지망하고 이에 대한 지식을 몰랐더라면 이 글을 읽어서 지식을 얻었다면 좋겠다.   &lt;/p&gt;
-&lt;p&gt;이로써, 나의 github blog의 첫 번째 글을 마무리하겠다.   &lt;/p&gt;
-&lt;p&gt;:)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[about]]></title><description><![CDATA[Your name TBD]]></description><link>https://samsara-ku.dev/resume-en/</link><guid isPermaLink="false">https://samsara-ku.dev/resume-en/</guid><pubDate>Sun, 27 Jan 2019 16:21:13 GMT</pubDate><content:encoded>&lt;h1 id=&quot;your-name&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#your-name&quot; aria-label=&quot;your name permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Your name&lt;/h1&gt;
+&lt;p&gt;위에서 기술했듯이, 마크다운은 마크업 언어가 태그(&lt;code class=&quot;language-text&quot;&gt;&amp;lt;div&amp;gt; &amp;lt;/div&amp;gt;&lt;/code&gt;과 같은 구조)로 이루어져 사용하기 힘들어서 만들어진 마크업의 파생형이다.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;읽기도 쓰기도 쉬운 문서 양식&lt;/strong&gt;을 지향하기 때문에, 복잡한 태그 구조가 사라지고 간단한 텍스트들과 몇 가지 문법만 알면 작성할 수 있게 했다.&lt;/p&gt;
+&lt;p&gt;지금 작성되고 있는, (당연하지만) 이 글도 Markdown을 사용하고 있다. 확장자명이 &lt;code class=&quot;language-text&quot;&gt;.md&lt;/code&gt;이며, 지금 이 글을 보고 있는 당신도 Markdown을 배운다면 blog를 만들 준비가 되었다는 의미이다!&lt;/p&gt;
+&lt;p&gt;이로써 기본상식인 Markup과 Markdown의 차이를 알아보았다.&lt;/p&gt;
+&lt;p&gt;만약 이 글을 읽고 있는 당신이 나처럼 Web Front-End Engineer를 지망하고 이에 대한 지식을 몰랐더라면 이 글을 읽어서 지식을 얻었다면 좋겠다.&lt;/p&gt;
+&lt;p&gt;이로써, 나의 github blog의 첫 번째 글을 마무리하겠다 :)&lt;/p&gt;</content:encoded></item><item><title><![CDATA[about]]></title><description><![CDATA[Your name TBD]]></description><link>https://samsara-ku.dev/resume-en/</link><guid isPermaLink="false">https://samsara-ku.dev/resume-en/</guid><pubDate>Sun, 27 Jan 2019 16:21:13 GMT</pubDate><content:encoded>&lt;h1 id=&quot;your-name&quot; style=&quot;position:relative;&quot;&gt;&lt;a href=&quot;#your-name&quot; aria-label=&quot;your name permalink&quot; class=&quot;anchor before&quot;&gt;&lt;svg aria-hidden=&quot;true&quot; focusable=&quot;false&quot; height=&quot;16&quot; version=&quot;1.1&quot; viewBox=&quot;0 0 16 16&quot; width=&quot;16&quot;&gt;&lt;path fill-rule=&quot;evenodd&quot; d=&quot;M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z&quot;&gt;&lt;/path&gt;&lt;/svg&gt;&lt;/a&gt;Your name&lt;/h1&gt;
 &lt;div align=&quot;center&quot;&gt;
 &lt;p&gt;&lt;em&gt;TBD&lt;/em&gt;&lt;/p&gt;
 &lt;/div&gt;</content:encoded></item></channel></rss>
