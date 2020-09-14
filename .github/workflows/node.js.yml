@@ -5,7 +5,7 @@ name: WebSite CI/CD
 
 on:
   push:
-    branches: [ master ]
+    branches: [ dev ]
     
 jobs:
   build:
@@ -21,6 +21,7 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - run: echo Action Start!
     
     - name: Deploy Start
     - run: npm run deploy
