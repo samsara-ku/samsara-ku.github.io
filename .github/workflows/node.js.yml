@@ -23,8 +23,9 @@ jobs:
         node-version: ${{ matrix.node-version }}
         
     - name: Git config
-      run: git config --global user.name "Yunhoe Ku"
-           git config --global user.email "gyh0316@gmail.com"
+      run: |
+        git config --global user.name "Yunhoe Ku"
+        git config --global user.email "gyh0316@gmail.com"
 
     - name: Denpendency install
       run: npm install
