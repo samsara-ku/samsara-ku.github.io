@@ -17,17 +17,10 @@ jobs:
         with:
           node-version: '14'
       
-      - name: package install
-        run: npm install
-      
-      - name: build gatsby
-        run: npm build
-        env:
-          GH_API_KEY: ${{ secrets.ACCESS_TOKEN }}
-      
       - name : deploy
-        uses: maxheld83/ghpages@v0.2.1
+        uses: enriikke/gatsby-gh-pages-action@v2
         env:
-          GITHUB_TOKEN: x-access-token:${{ secrets.GITHUB_TOKEN }}
-          GH_PAT: ${{ secrets.ACCESS_TOKEN }}
-          BUILD_DIR: 'public/'
+          access-token: ${{ secrets.ACCESS_TOKEN }}
+          deploy-branch: gh-pages
+          gatsby-args: --prefix-paths
+
