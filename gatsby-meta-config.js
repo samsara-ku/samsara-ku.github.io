@@ -2,7 +2,7 @@ module.exports = {
   title: `samsara-ku blog`,
   description: `About Computer Vision`,
   author: `[Yunhoe Ku]`,
-  introduction: `:)`,
+  introduction: `For studying computer vision`,
   siteUrl: `https://samsara-ku.dev/`, // Your blog site url
   social: {
     twitter: ``, // Your Twitter account
