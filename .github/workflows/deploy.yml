@@ -28,6 +28,6 @@ jobs:
       - name : deploy
         uses: maxheld83/ghpages@v0.2.1
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GITHUB_TOKEN: x-access-token:${{ secrets.GITHUB_TOKEN }}
           GH_PAT: ${{ secrets.ACCESS_TOKEN }}
           BUILD_DIR: 'public/'
