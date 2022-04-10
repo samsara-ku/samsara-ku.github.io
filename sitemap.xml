@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml" xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+<url> <loc>https://samsara-ku.dev/development/what-is-call-stack-and-event-loop/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://samsara-ku.dev/development/es6-syntax/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://samsara-ku.dev/development/what-is-IIFE/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://samsara-ku.dev/etc/question/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://samsara-ku.dev/common_sense/importance-of-git-issue/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://samsara-ku.dev/common_sense/difference-between-git-and-github/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://samsara-ku.dev/common_sense/how-to-write-markdown/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://samsara-ku.dev/common_sense/difference-between-markup-and-markdown/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://samsara-ku.dev/about/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+<url> <loc>https://samsara-ku.dev/</loc> <changefreq>daily</changefreq> <priority>0.7</priority> </url>
+</urlset>
