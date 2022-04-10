@@ -15,6 +15,7 @@ jobs:
       - name: GitHub Pages
         if: success()
         with:
+          node-version: '14'
           target_branch: gh-pages
           build_dir: public
         uses: crazy-max/ghaction-github-pages@v1.2.5
