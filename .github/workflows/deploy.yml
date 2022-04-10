@@ -3,7 +3,7 @@ name: Auto Deploy Project When Push Main Branch
 on:
   push:
     branches:
-      - main
+      - dev
         
 jobs:
   build:
