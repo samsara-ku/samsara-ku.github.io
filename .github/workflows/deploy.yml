@@ -1,4 +1,4 @@
-name: build gatsby
+name: Gatsby Publish
 
 on:
   push:
@@ -9,24 +9,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Setup Node
-        uses: actions/setup-node@v1
-        with:
-          node-version: '14.x'
-  
-      - name: Install dependencies
+      - name: checkout
+        uses: actions/checkout@v2
+      
+      - name: package install
         run: npm install
-  
-      - name: Build
+      
+      - name: build gatsby
         run: npm build
         env:
           GH_API_KEY: ${{ secrets.ACCESS_TOKEN }}
-          
-      - name: deploy
-      - uses: peaceiris/actions-gh-pages@v2
+      
+      - name: CNAME copy
+        run: cp CNAME public/
+      
+      - name : deploy
+        uses: maxheld83/ghpages@v0.2.1
         env:
-          GITHUB_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
           GH_PAT: ${{ secrets.ACCESS_TOKEN }}
-          PUBLISH_BRANCH: gh-pages
-          PUBLISH_DIR: ./public
+          deploy-branch: gh-pages
+          BUILD_DIR: 'public/'
