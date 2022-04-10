@@ -1,9 +1,10 @@
 name: Auto Deploy Project When Push Main Branch
-  on:
-    push:
-      branches:
-        - main
 
+on:
+  push:
+    branches:
+      - main
+        
 jobs:
   build:
     runs-on: ubuntu-latest
