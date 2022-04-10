@@ -11,6 +11,11 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+        
+      - name: change node version
+        uses: actions/setup-node@v3
+        with:
+          node-version: '14'
       
       - name: package install
         run: npm install
