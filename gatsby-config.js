@@ -71,6 +71,8 @@ module.exports = {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
         trackingId: metaConfig.ga,
+        head: true,
+        anonymize: true,
       },
     },
     {
@@ -89,6 +91,25 @@ module.exports = {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://your-blog.netlify.app',
+        sitemap: 'https://your-blog.netlify.app/sitemap.xml',
+        policy: [
+          {
+            userAgent: '*',
+            allow: '/',
+          },
+        ],
+      },
+    },
+    {
+      resolve: `gatsby-plugin-google-adsense`,
+      options: {
+        publisherId: metaConfig.ad,
       },
     },
     `gatsby-transformer-sharp`,
